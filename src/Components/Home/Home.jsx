@@ -5,6 +5,7 @@ import Searchh from "./Search";
 export default function Home() {
     return (
         <>
+        {/* <Carousell/> */}
         <Searchh />
         </>
     )
