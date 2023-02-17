@@ -1,21 +1,47 @@
-import React from "react";
-import { Navbar } from "react-bootstrap";
-import Hotel1 from "./Images/Hotel1.jpg";
-
+import React, {useState, useEffect} from "react";
+import { useLocation } from 'react-router-dom'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Axios from 'axios';
 
 function Hotell() {
+
+  const[cityList, setCityList] = useState([]);
+  const {state} = useLocation();
+
+  useEffect(() => {
+      Axios.get(`http://localhost:8800/cities/${state.destination}`).then((response) =>{
+        setCityList(response.data)
+        console.log(state)
+      })
+     
+  },[0]);
+
     return (
       <>
-      <Navbar/>
-
-  <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src={Hotel1} alt="Card image cap"> </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+      {cityList.map((val,key)=>{
+        return(
+      <Row xs={1} md={2} className="g-4 container" >
+      {Array.from({ length: 1 }).map((_, idx) => (
+        <Col>
+          <Card key={key}>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>{val.Name}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{val.cityName}, {val.Type}</Card.Subtitle>
+              <Card.Text>
+                {val.Desc}
+              </Card.Text>
+              <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+        )})}
 </>
 )}
 

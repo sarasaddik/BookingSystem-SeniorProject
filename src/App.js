@@ -16,7 +16,6 @@ function App() {
   return (
     <div>
       <NavBar/>
-      {/* <Home/> */}
    
    <BrowserRouter>
       <Routes>
