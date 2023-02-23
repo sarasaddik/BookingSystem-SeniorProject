@@ -1,3 +1,13 @@
 .Footercolor{
     color: white;
 }
+
+
+.footer a{
+    color: #fff;
+    text-decoration: none !important;
+}
+
+.fppter a:hoover{
+    color: gray;
+}

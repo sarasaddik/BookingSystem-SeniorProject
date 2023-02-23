@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import NavBar from './Components/Navbar/Navbar';
-// import Footer from "./Components/Footer/Footer";
+ // import Footerup from "./Components/Footer/FooterUp";
 import Home from "./Components/Home/Home";
 import Hotell from "./Components/Hotel/Hotel";
 
@@ -11,6 +11,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Footerup from "./Components/Footer/FooterUp";
 
 function App() {
   return (
