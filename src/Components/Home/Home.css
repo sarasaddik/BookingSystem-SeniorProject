@@ -20,7 +20,7 @@
 /*Search */
 
 .header{
-    background-color: blue;
+    /* background-color: blue; */
     color: aliceblue;
     display: flex;
     justify-content: center;
@@ -96,6 +96,7 @@
 .headerSearchInput{
     border: none;
     outline: none;
+    margin-bottom: 5px;
 }
 
 .headerSearchText{
@@ -155,7 +156,7 @@
 
 p{
     font-size: 14px;
-    color: aqua;
+    color: black;
 }
 
 .section{

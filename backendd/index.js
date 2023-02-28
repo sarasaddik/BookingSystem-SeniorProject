@@ -52,6 +52,63 @@ app.get(`/cities/koura`, (req,res)=>{
     })
 })
 
+app.get(`/cities/batroun`, (req,res)=>{
+    const q = "SELECT * FROM city WHERE cityName='batroun' "
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+app.get(`/cities/jbeil`, (req,res)=>{
+    const q = "SELECT * FROM city WHERE cityName='jbeil' "
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+app.get(`/cities/Farayya`, (req,res)=>{
+    const q = "SELECT * FROM city WHERE cityName='Farayya' "
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+app.get(`/types/hotel`, (req,res)=>{
+    const q = "SELECT * FROM city WHERE Type='hotel' "
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+app.get(`/types/apartment`, (req,res)=>{
+    const q = "SELECT * FROM city WHERE Type='apartment' "
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+
+
 
 
 

@@ -1,8 +1,21 @@
 import "./Home.css" ;
 import React from "react";
 import Button from 'react-bootstrap/Button';
+import {useNavigate} from "react-router-dom"
+import {useState} from 'react'
+
 
 const PropertyTypes = () => {
+
+    const[destination, setDestination] = useState("")
+
+
+    const navigate = useNavigate()
+
+    const Browsing = () => {
+      navigate("/types")
+
+    }
 
     return(
 
@@ -19,7 +32,7 @@ const PropertyTypes = () => {
                   <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
                       <div className='card-body'>
                       <h5> Hotels Type </h5>
-                         <Button variant="outline-secondary">Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={Browsing} >Click To Browse</Button>{' '}
 
                       </div>
                   </div>
@@ -30,7 +43,7 @@ const PropertyTypes = () => {
                   <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
                       <div className='card-body'>
                       <h5> Resorts Type </h5>
-                         <Button variant="outline-secondary">Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={Browsing}>Click To Browse</Button>{' '}
 
                       </div>
                   </div>
@@ -40,7 +53,7 @@ const PropertyTypes = () => {
                   <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
                       <div className='card-body'>
                       <h5> Apartments Type </h5>
-                         <Button variant="outline-secondary">Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={Browsing}>Click To Browse</Button>{' '}
 
                       </div>
                   </div>
@@ -50,7 +63,7 @@ const PropertyTypes = () => {
                   <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
                       <div className='card-body'>
                       <h5> Villas Type </h5>
-                         <Button variant="outline-secondary">Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={Browsing}>Click To Browse</Button>{' '}
 
                       </div>
                   </div>

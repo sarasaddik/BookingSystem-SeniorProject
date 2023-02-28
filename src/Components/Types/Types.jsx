@@ -4,16 +4,15 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Axios from 'axios';
-import NavBarMin from "../Navbar/NavbarMinimise";
 
-function Hotell() {
+function BrowsingTypes() {
 
-  const[cityList, setCityList] = useState([]);
+  const[cityType, setCityType] = useState([]);
   const {state} = useLocation();
 
   useEffect(() => {
-      Axios.get(`http://localhost:8800/cities/${state.destination}`).then((response) =>{
-        setCityList(response.data)
+      Axios.get(`http://localhost:8800/types/${state}`).then((response) =>{
+        setCityType(response.data)
         console.log(state)
       })
      
@@ -21,8 +20,7 @@ function Hotell() {
 
     return (
       <>
-      <NavBarMin/>
-      {cityList.map((val,key)=>{
+      {cityType.map((val,key)=>{
         return(
       <Row xs={1} md={2} className="g-4 container" >
       {Array.from({ length: 1 }).map((_, idx) => (
@@ -47,4 +45,4 @@ function Hotell() {
 </>
 )}
 
-  export default Hotell;
+  export default BrowsingTypes;
