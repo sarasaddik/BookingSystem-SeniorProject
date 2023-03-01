@@ -31,7 +31,7 @@ function Servicess() {
                       aria-controls="example-collapse-text"
                       aria-expanded={open1}
                     >
-                      Read More...
+                      Learn More...
                     </Button>
                     <Collapse in={open1}>
                       <div id="example-collapse-text">
@@ -59,7 +59,7 @@ function Servicess() {
                       aria-controls="example-collapse-text"
                       aria-expanded={open2}
                     >
-                      Read More...
+                      Learn More...
                     </Button>
                     <Collapse in={open2}>
                       <div id="example-collapse-text">
@@ -87,7 +87,7 @@ function Servicess() {
                       aria-controls="example-collapse-text"
                       aria-expanded={open3}
                     >
-                      Read More...
+                      Learn More...
                     </Button>
                     <Collapse in={open3}>
                       <div id="example-collapse-text">
