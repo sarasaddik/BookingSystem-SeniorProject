@@ -107,6 +107,30 @@ app.get(`/types/apartment`, (req,res)=>{
     })
 })
 
+app.get(`/types/resorts`, (req,res)=>{
+    const q = "SELECT * FROM city WHERE Type='resorts' "
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+app.get(`/types/villas`, (req,res)=>{
+    const q = "SELECT * FROM city WHERE Type='villas' "
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+
+
 
 
 

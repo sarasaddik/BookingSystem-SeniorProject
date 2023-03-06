@@ -1,26 +1,26 @@
-import React, {useState, useEffect} from "react";
-import { useLocation } from 'react-router-dom'
+
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 
-function BrowsingTypes() {
+function Apartment_Types() {
 
-  const[cityType, setCityType] = useState([]);
-  const {state} = useLocation();
+  const[cityList, setCityList] = useState([]);
+
 
   useEffect(() => {
-      Axios.get(`http://localhost:8800/types/${state}`).then((response) =>{
-        setCityType(response.data)
-        console.log(state)
-      })
-     
-  },[0]);
+    Axios.get(`http://localhost:8800/types/apartment`).then((response) =>{
+      setCityList(response.data)
+      console.log(response)
+    })
+   
+},[0]);
 
-    return (
-      <>
-      {cityType.map((val,key)=>{
+  return(
+    <>
+     {cityList.map((val,key)=>{
         return(
       <Row xs={1} md={2} className="g-4 container" >
       {Array.from({ length: 1 }).map((_, idx) => (
@@ -41,8 +41,10 @@ function BrowsingTypes() {
         </Col>
       ))}
     </Row>
-        )})}
-</>
-)}
+        )})}    
+    </>
+  )
+}
+ 
 
-  export default BrowsingTypes;
+  export default Apartment_Types;

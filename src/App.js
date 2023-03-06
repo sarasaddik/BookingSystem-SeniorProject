@@ -6,7 +6,10 @@ import './App.css';
 import Home from "./Components/Home/Home";
 import Hotell from "./Components/Hotel/Hotel";
 import LogInForm from "./Components/LogInForm/LogIn";
-import BrowsingTypes from "./Components/Types/Types";
+import Hotel_Types from "./Components/Types/HotelTypes";
+import Apartment_Types from "./Components/Types/ApartmentsTypes";
+import Resort_Types from "./Components/Types/ResortsTypes";
+import Villas_Types from "./Components/Types/VillasTypes";
 
 
 import {
@@ -24,8 +27,12 @@ function App() {
    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/hotels" element={<Hotell/>}/>
-        <Route path="/types" element={< BrowsingTypes/>}/>
+        <Route path="/cities" element={<Hotell/>}/>
+        <Route path="/Hotels" element={< Hotel_Types/>}/>
+        <Route path="/Apartments" element={< Apartment_Types/>}/>
+        <Route path="/resorts" element={< Resort_Types/>}/>
+        <Route path="/villas" element={< Villas_Types/>}/>
+
         <Route path="/hotels/:id" element={<LogInForm/>}/>
       </Routes>
     </BrowserRouter>

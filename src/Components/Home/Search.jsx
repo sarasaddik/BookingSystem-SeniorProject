@@ -1,7 +1,6 @@
 import React from 'react';
 import "./Home.css";
 import {useState} from 'react'
-import { Calendar } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
@@ -36,7 +35,7 @@ function Searchh() {
       const navigate = useNavigate()
 
       const handleSearch = () => {
-        navigate("/hotels", {state: {destination,date,options}})
+        navigate("/cities", {state: {destination,date,options}})
 
       }
 

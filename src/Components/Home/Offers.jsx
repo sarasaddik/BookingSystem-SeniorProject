@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import "./Home.css";
-import Blue from "./Images/Blue.png";
 import { HashLink as Link} from 'react-router-hash-link';
+
+import breakfastOffer from "./Images/breakfastOffer.jpg";
+import romanticOffer from "./Images/romanticOffer.jpg";
+import BookingInAdvance from "./Images/BookingInAdvance.jpg";
 
 
 function Offerss() {
@@ -21,7 +24,7 @@ function Offerss() {
           </div>
               <div className='col-md-4'>
                   <div className='card shadow'>
-                      <img src={Blue} className="w-100 border-bottom" alt=" " />
+                      <img src={breakfastOffer} className="w-100 border-bottom" alt=" " />
                       <div className='card-body'>
                           <h4>Breakfast Offer</h4>
                           <p>Enjoy the most important meal of the day, be it private or for a business meeting.</p>
@@ -50,7 +53,7 @@ function Offerss() {
               </div>
               <div className='col-md-4'>
                   <div className='card shadow'>
-                      <img src={Blue} className="w-100 border-bottom" alt=" " />
+                      <img src={romanticOffer} className="w-100 border-bottom" alt=" " />
                       <div className='card-body'>
                           <h4>Romantic Offer</h4>
                           <p>Sara Booking welcomes couples to be pampered in style with this special romantic package,
@@ -83,7 +86,7 @@ function Offerss() {
               </div>
               <div className='col-md-4'>
                   <div className='card shadow'>
-                      <img src={Blue} className="w-100 border-bottom" alt=" " />
+                      <img src={BookingInAdvance} className="w-100 border-bottom" alt=" " />
                       <div className='card-body'>
                           <h4>Book in advance and save</h4>
                           <p>When is the best time to book a hotel? We say, in advance!</p>

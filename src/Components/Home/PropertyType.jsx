@@ -2,20 +2,34 @@ import "./Home.css" ;
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import {useNavigate} from "react-router-dom"
-import {useState} from 'react'
+
+import hotelType from "./Images/hotelType.jpg";
+import resortType from "./Images/resortType.jpg";
+import apartmentType from "./Images/apartmentType.jpg";
+import villasType from "./Images/villasType.jpg";
+
 
 
 const PropertyTypes = () => {
 
-    const[destination, setDestination] = useState("")
+    const navigate = useNavigate();
 
+    const getHotels = () => {
+        navigate("/Hotels")
 
-    const navigate = useNavigate()
+      }
 
-    const Browsing = () => {
-      navigate("/types")
+      const getApartments = () => {
+        navigate("/Apartments")
+      }
 
-    }
+      const getResorts = () => {
+        navigate("/Resorts")
+      }
+
+      const getVillas = () => {
+        navigate("/Villas")
+      }
 
     return(
 
@@ -29,10 +43,10 @@ const PropertyTypes = () => {
           </div>
               <div className='col-md-3'>
                   <div className='card shadow'>
-                  <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
+                  <img src={hotelType} alt=""/>
                       <div className='card-body'>
                       <h5> Hotels Type </h5>
-                         <Button variant="outline-secondary" onClick={Browsing} >Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={getHotels} >Click To Browse</Button>{' '}
 
                       </div>
                   </div>
@@ -40,30 +54,30 @@ const PropertyTypes = () => {
 
               <div className='col-md-3'>
                   <div className='card shadow'>
-                  <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
+                  <img src={resortType} alt=""/>
                       <div className='card-body'>
                       <h5> Resorts Type </h5>
-                         <Button variant="outline-secondary" onClick={Browsing}>Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={getResorts} >Click To Browse</Button>{' '}
 
                       </div>
                   </div>
               </div>
               <div className='col-md-3'>
                   <div className='card shadow'>
-                  <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
+                  <img src={apartmentType} alt=""/>
                       <div className='card-body'>
                       <h5> Apartments Type </h5>
-                         <Button variant="outline-secondary" onClick={Browsing}>Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={getApartments} >Click To Browse</Button>{' '}
 
                       </div>
                   </div>
               </div>
               <div className='col-md-3'>
                   <div className='card shadow'>
-                  <img src="https://images.skyscrapercenter.com/uploads/Beirut_2016_(ccby-sa)MichalHuniewicz-flickr210126-060138.jpg" alt=""/>
+                  <img src={villasType} alt=""/>
                       <div className='card-body'>
                       <h5> Villas Type </h5>
-                         <Button variant="outline-secondary" onClick={Browsing}>Click To Browse</Button>{' '}
+                         <Button variant="outline-secondary" onClick={getVillas} >Click To Browse</Button>{' '}
 
                       </div>
                   </div>

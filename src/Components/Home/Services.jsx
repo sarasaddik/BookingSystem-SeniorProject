@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import "./Home.css";
-import Blue from "./Images/Blue.png";
+import { HashLink as Link} from 'react-router-hash-link';
+import taxiService from "./Images/taxiService.jpg";
+import laundryService from "./Images/laundryService.jpg";
+import checkingRoom from "./Images/checkingRoom.jpg";
+
 
 function Servicess() {
   const [open1, setOpen1] = useState(false);
@@ -19,10 +23,11 @@ function Servicess() {
             </div>
             <div className="col-md-4">
               <div className="card shadow">
-                <img src={Blue} className="w-100 border-bottom" alt=" " />
+                <img src={taxiService} className="w-100 border-bottom" alt=" " />
                 <div className="card-body">
                   <h6>TAXI Service</h6>
-                  <div className="underline"></div>
+                <h4>WELCOME TO HOTEL TAXI</h4>
+
                   <>
                     <Button
                       variant="secondary"
@@ -31,15 +36,16 @@ function Servicess() {
                       aria-controls="example-collapse-text"
                       aria-expanded={open1}
                     >
-                      Learn More...
+                      Learn more...
                     </Button>
                     <Collapse in={open1}>
                       <div id="example-collapse-text">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high
-                        life accusamus terry richardson ad squid. Nihil anim
-                        keffiyeh helvetica, craft beer labore wes anderson cred
-                        nesciunt sapiente ea proident.
-                      </div>
+                        <p></p>
+                    <p>  We hope you enjoy our direct and easy transfer service to your hotel.</p>
+                    <p>  Wheather you are just arriving or head home, let us get you to your destination without the hassle.</p>
+                    <p><h4>  Your Hoteltaxi Team</h4>  </p>  
+                    <p>For more info contact us by sending an <Link to='#contactus'> e-mail </Link> </p>                 
+                       </div>
                     </Collapse>
                   </>
                 </div>
@@ -47,10 +53,10 @@ function Servicess() {
             </div>
             <div className="col-md-4">
               <div className="card shadow">
-                <img src={Blue} className="w-100 border-bottom" alt=" " />
+                <img src={laundryService} className="w-100 border-bottom" alt=" " />
                 <div className="card-body">
                   <h6>Laundry Service</h6>
-                  <div className="underline"></div>
+                 <h4> Laundered The Same Day</h4>
                   <>
                     <Button
                       variant="secondary"
@@ -59,14 +65,14 @@ function Servicess() {
                       aria-controls="example-collapse-text"
                       aria-expanded={open2}
                     >
-                      Learn More...
+                      Learn more...
                     </Button>
                     <Collapse in={open2}>
                       <div id="example-collapse-text">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high
-                        life accusamus terry richardson ad squid. Nihil anim
-                        keffiyeh helvetica, craft beer labore wes anderson cred
-                        nesciunt sapiente ea proident.
+                        <p></p>
+                      <p>  Our wash team will wash, dry and fold your clothes ready to go.
+                       We pride ourselves on keeping your clothes in top shape, and delivering your clean laundry on time, and in best form. </p>
+                      For more info contact us on <Link to='#contactus'> e-mail </Link>
                       </div>
                     </Collapse>
                   </>
@@ -75,7 +81,7 @@ function Servicess() {
             </div>
             <div className="col-md-4">
               <div className="card shadow">
-                <img src={Blue} className="w-100 border-bottom" alt=" " />
+                <img src={checkingRoom} className="w-100 border-bottom" alt=" " />
                 <div className="card-body">
                   <h6>Check up rooms by VideoCall</h6>
                   <div className="underline"></div>
