@@ -10,6 +10,7 @@ import Hotel_Types from "./Components/Types/HotelTypes";
 import Apartment_Types from "./Components/Types/ApartmentsTypes";
 import Resort_Types from "./Components/Types/ResortsTypes";
 import Villas_Types from "./Components/Types/VillasTypes";
+// import Example from "./Components/LogInForm/Modal";
 
 
 import {
@@ -17,7 +18,6 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Footerup from "./Components/Footer/FooterUp";
 
 function App() {
   return (
@@ -32,6 +32,7 @@ function App() {
         <Route path="/Apartments" element={< Apartment_Types/>}/>
         <Route path="/resorts" element={< Resort_Types/>}/>
         <Route path="/villas" element={< Villas_Types/>}/>
+        {/* <Route path="/LogIn" element={< Example/>}/> */}
 
         <Route path="/hotels/:id" element={<LogInForm/>}/>
       </Routes>

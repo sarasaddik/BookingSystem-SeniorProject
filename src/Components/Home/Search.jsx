@@ -19,23 +19,25 @@ function Searchh() {
           key: "selection",
         },
       ]);
-      const[openOptions, setOpenOptions] = useState(false);
-      const [options, setOptions] = useState({
-        adult: 1,
-        children: 0,
-        room: 1,
-      });
+      // const[openOptions, setOpenOptions] = useState(false);
+      // const [options, setOptions] = useState({
+      //   adult: 1,
+      //   children: 0,
+      //   room: 1,
+      // });
 
-      const handleOption = (name, operation) =>{
-        setOptions(prev=>{return{
-            ...prev, [name]: operation === "i" ? options[name] +1 : options[name] - 1,
-        }})
-      }
+      // const handleOption = (name, operation) =>{
+      //   setOptions(prev=>{return{
+      //       ...prev, [name]: operation === "i" ? options[name] +1 : options[name] - 1,
+      //   }})
+      // }
 
       const navigate = useNavigate()
 
       const handleSearch = () => {
-        navigate("/cities", {state: {destination,date,options}})
+        navigate("/cities", {state: {destination,date }})
+        //  ,options
+       
 
       }
 
@@ -52,7 +54,7 @@ function Searchh() {
                    onChange={e=>setDestination(e.target.value)}
                    />
             </div>
-            <div className="headerSearchItem">
+            {/* <div className="headerSearchItem">
                 <span onClick={()=>setOpenDate(!openDate)} className="headerSearchText">{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")} `}</span>
                 {openDate && ( <DateRange
                  editableDateInputs={true}
@@ -61,8 +63,8 @@ function Searchh() {
                  ranges={date}
                  className="date"
                  minDate={new Date()}
-            />)}
-            <div className="headerSearchItem">
+            />)} */}
+            {/* <div className="headerSearchItem">
                 <span onClick={() => setOpenOptions(!openOptions)} className="headerSearchText"> {`${options.adult} adult . ${options.children} children . ${options.room} room`}  </span>
                 {openOptions && <div className="options">
                     <div className="optionItem">
@@ -96,13 +98,13 @@ function Searchh() {
 }
             </div>
             </div>
-            <div className="headerSearchItem">
+            <div className="headerSearchItem"> */}
                 <button className="headerBtn" onClick={handleSearch}> Search </button>
             </div>
             </div>
             
             </div>
-            </div>
+   
   );
 }
 

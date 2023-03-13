@@ -83,8 +83,8 @@ function Servicess() {
               <div className="card shadow">
                 <img src={checkingRoom} className="w-100 border-bottom" alt=" " />
                 <div className="card-body">
-                  <h6>Check up rooms by VideoCall</h6>
-                  <div className="underline"></div>
+                  <h6>Inspectation service</h6>
+                  
                   <>
                     <Button
                       variant="secondary"

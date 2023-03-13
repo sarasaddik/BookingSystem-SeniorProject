@@ -1,5 +1,5 @@
-
-import Card from 'react-bootstrap/Card';
+import "./Types.css"
+import CardTypes from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import React, {useState, useEffect} from "react";
@@ -25,19 +25,19 @@ function Apartment_Types() {
       <Row xs={1} md={2} className="g-4 container" >
       {Array.from({ length: 1 }).map((_, idx) => (
         <Col>
-          <Card key={key}>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>{val.Name}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{val.cityName}, {val.Type}</Card.Subtitle>
-              <Card.Text>
+          <CardTypes key={key}>
+            <CardTypes.Img variant="top" src="holder.js/100px160" />
+            <CardTypes.Body>
+              <CardTypes.Title>{val.Name}</CardTypes.Title>
+              <CardTypes.Subtitle className="mb-2 text-muted">{val.cityName}, {val.Type}</CardTypes.Subtitle>
+              <CardTypes.Text>
                 {val.Desc}
-              </Card.Text>
-              <Card.Footer>
+              </CardTypes.Text>
+              <CardTypes.Footer>
           <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-            </Card.Body>
-          </Card>
+        </CardTypes.Footer>
+            </CardTypes.Body>
+          </CardTypes>
         </Col>
       ))}
     </Row>

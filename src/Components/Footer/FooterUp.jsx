@@ -29,7 +29,6 @@ const Footerup=() => {
                         <hr/>
                         <div> <Link to='#book' smooth>Book</Link> </div>
                         <div> <Link to="#aboutus">About Us</Link> </div>
-                        <div> <Link to="">Log in</Link> </div>
                         <div> <Link to="#service">Services</Link> </div>
                         <div> <Link to="#offers">Offers</Link> </div>
 
