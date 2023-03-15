@@ -35,7 +35,7 @@ function Searchh() {
       const navigate = useNavigate()
 
       const handleSearch = () => {
-        navigate("/cities", {state: {destination,date }})
+        navigate("/cities", {state: {destination}})
         //  ,options
        
 

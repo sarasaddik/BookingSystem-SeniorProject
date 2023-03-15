@@ -18,33 +18,51 @@ function Apartment_Types() {
    
 },[0]);
 
+return(
+  <>
+
+{cityList.map((val,key)=>{
   return(
-    <>
-     {cityList.map((val,key)=>{
-        return(
-      <Row xs={1} md={2} className="g-4 container" >
-      {Array.from({ length: 1 }).map((_, idx) => (
-        <Col>
-          <CardTypes key={key}>
-            <CardTypes.Img variant="top" src="holder.js/100px160" />
-            <CardTypes.Body>
-              <CardTypes.Title>{val.Name}</CardTypes.Title>
-              <CardTypes.Subtitle className="mb-2 text-muted">{val.cityName}, {val.Type}</CardTypes.Subtitle>
-              <CardTypes.Text>
-                {val.Desc}
-              </CardTypes.Text>
-              <CardTypes.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </CardTypes.Footer>
-            </CardTypes.Body>
-          </CardTypes>
-        </Col>
-      ))}
-    </Row>
-        )})}    
-    </>
+    <div className="searchItem" key={key}>
+    <img
+      src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+      alt=""
+      className="siImg"
+    />
+    <div className="siDesc">
+      <h1 className="siTitle">{val.cityName} , {val.Type} </h1>
+      <h5 className="siName"><b>{val.Name}</b></h5>
+      <span className="siTaxiOp">Free airport taxi</span>
+      <span className="siSubtitle">
+        {val.Location}
+      </span>
+      <span className="siFeatures">
+   <div> {val.roomsNumber}. </div>
+  <div>  {val.Desc} </div>
+  </span>
+      {/* <span className="siFeatures">
+        {val.Desc}
+     </span>
+     <span>{val.roomsNumber} Rooms</span> */}
+    </div>
+    <div className="siDetails">
+      <div className="siRating">
+        <span>{val.Review}</span>
+        <button>8.9</button>
+      </div>
+      <div className="siDetailTexts">
+        <span className="siPrice">{val.Price}$</span>
+        <span className="siTaxOp">Includes taxes and fees</span>
+        <button className="siCheckButton">See availability</button>
+      </div> 
+    </div>
+  </div>
+ 
+);
+})}
+</>
   )
-}
+};
  
 
   export default Apartment_Types;

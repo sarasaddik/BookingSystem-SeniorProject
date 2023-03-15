@@ -34,14 +34,18 @@ import "./Types.css"
               {val.Location}
             </span>
             <span className="siFeatures">
+         <div> {val.roomsNumber} </div>
+        <div>  {val.Desc} </div>
+        </span>
+            {/* <span className="siFeatures">
               {val.Desc}
            </span>
-           <span>{val.roomsNumber} Rooms</span>
+           <span>{val.roomsNumber} Rooms</span> */}
           </div>
           <div className="siDetails">
             <div className="siRating">
               <span>{val.Review}</span>
-              
+              <button>8.9</button>
             </div>
             <div className="siDetailTexts">
               <span className="siPrice">{val.Price}$</span>
