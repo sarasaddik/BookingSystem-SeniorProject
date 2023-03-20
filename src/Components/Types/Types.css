@@ -30,8 +30,8 @@
   }
   
   .siImg {
-    width: 250px;
-    height: 200px;
+    width: 270px;
+    height: 260px;
     object-fit: cover;
   }
   
@@ -128,5 +128,6 @@
     cursor: pointer;
     border-radius: 25px;
   }
+  
   
   

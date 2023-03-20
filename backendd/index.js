@@ -129,6 +129,17 @@ app.get(`/types/villas`, (req,res)=>{
     })
 })
 
+app.get(`/description`, (req,res)=>{
+    const q = "SELECT * FROM allplaces"
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
 
 
 

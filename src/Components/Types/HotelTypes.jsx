@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 import "./Types.css"
+import Accordion from 'react-bootstrap/Accordion';
+
 
     const Hotel_Types = () => {
+     
 
       const[cityList, setCityList] = useState([]);
 
@@ -37,6 +40,22 @@ import "./Types.css"
          <div> {val.roomsNumber} </div>
         <div>  {val.Desc} </div>
         </span>
+        <div>
+            <Accordion >
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+            </div>
             {/* <span className="siFeatures">
               {val.Desc}
            </span>
@@ -50,7 +69,7 @@ import "./Types.css"
             <div className="siDetailTexts">
               <span className="siPrice">{val.Price}$</span>
               <span className="siTaxOp">Includes taxes and fees</span>
-              <button className="siCheckButton">See availability</button>
+              <button className="siCheckButton">Book Now</button>
             </div> 
           </div>
         </div>
