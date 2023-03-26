@@ -6,6 +6,8 @@ import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
+import NavBarMin from "../Navbar/NavbarMinimise";
+
 
 
 function Resort_Types() {
@@ -23,6 +25,7 @@ function Resort_Types() {
 
 return(
   <>
+<NavBarMin/>
 
 {cityList.map((val,key)=>{
 
@@ -34,12 +37,12 @@ return (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
+          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3></h3>
+          <p></p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -57,7 +60,7 @@ return (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
           alt="Third slide"
         />
 
@@ -84,20 +87,14 @@ return (
     </span>
     <span className="siFeatures">
  <div> {val.roomsNumber} </div>
-<div>  {val.Desc} </div>
 </span>
 <div>
             <Accordion >
       <Accordion.Item eventKey="0">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header>See more...</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+        <div>  {val.Desc} </div>
+        <div> {val.MoreDesc} </div>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
@@ -110,12 +107,12 @@ return (
   <div className="siDetails">
     <div className="siRating">
       <span>{val.Review}</span>
-      <button>8.9</button>
+      <button>{val.View}</button>
     </div>
     <div className="siDetailTexts">
-      <span className="siPrice">{val.Price}$</span>
+      <span className="siPrice">{val.Price}$ per night</span>
       <span className="siTaxOp">Includes taxes and fees</span>
-      <button className="siCheckButton">See availability</button>
+      <button className="siCheckButton">Book Now</button>
     </div> 
   </div>
 </div>

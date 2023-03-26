@@ -108,7 +108,7 @@ app.get(`/types/apartment`, (req,res)=>{
 })
 
 app.get(`/types/resorts`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE Type='resorts' "
+    const q = "SELECT * FROM city WHERE Type='resort' "
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
