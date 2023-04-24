@@ -84,7 +84,7 @@ function Servicess() {
                 <img src={checkingRoom} className="w-100 border-bottom" alt=" " />
                 <div className="card-body">
                   <h6>Inspectation service</h6>
-                  
+                  <h4> Rooms Inspectation</h4>
                   <>
                     <Button
                       variant="secondary"
@@ -97,10 +97,10 @@ function Servicess() {
                     </Button>
                     <Collapse in={open3}>
                       <div id="example-collapse-text">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high
-                        life accusamus terry richardson ad squid. Nihil anim
-                        keffiyeh helvetica, craft beer labore wes anderson cred
-                        nesciunt sapiente ea proident.
+                      <p>  If you are living abroad, or you are far away from our destination, you can choose the perfect room that fits you.</p>
+                     <p>  Calling us by video call, so we can show you more details about the room that you have been book it. </p>
+                     <p>Our number: 71563090</p>
+                     For more info contact us on <Link to='#contactus'> e-mail </Link> Or throw whatsapp.
                       </div>
                     </Collapse>
                   </>

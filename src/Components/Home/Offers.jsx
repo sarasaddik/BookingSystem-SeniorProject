@@ -4,8 +4,8 @@ import Collapse from "react-bootstrap/Collapse";
 import "./Home.css";
 import { HashLink as Link} from 'react-router-hash-link';
 
-import breakfastOffer from "./Images/breakfastOffer.jpg";
-import romanticOffer from "./Images/romanticOffer.jpg";
+import deliveringFood from "./Images/deliveringFood.jpg";
+import samTours from "./Images/sam-tours.jpg";
 import BookingInAdvance from "./Images/BookingInAdvance.jpg";
 
 
@@ -24,10 +24,10 @@ function Offerss() {
           </div>
               <div className='col-md-4'>
                   <div className='card shadow'>
-                      <img src={breakfastOffer} className="w-100 border-bottom" alt=" " />
+                      <img src={deliveringFood} className="w-100 border-bottom" alt=" " />
                       <div className='card-body'>
-                          <h4>Breakfast Offer</h4>
-                          <p>Enjoy the most important meal of the day, be it private or for a business meeting.</p>
+                          <h4>Delivering healthy food</h4>
+                          <p>We have good news for you... From now, we have a monthly subscription to order a house and healthy food.</p>
                           
                           <>
                     <Button
@@ -42,9 +42,11 @@ function Offerss() {
                     <Collapse in={open1}>
                       <div id="example-collapse-text">
                         <p> </p>
-                      <p>Choose a variety from freshly prepared eggs, selection of cold cuts, cereals, and fruits.</p>
-                      <p>Price: 5 USD/ for 1 person</p>
-                      <p>To book the Breakfast package, please contact us by sending an <Link to='#contactus'> e-mail </Link> </p>
+
+  
+                        <p>  We provide our delivery food by local cuisine depending to your location; dealing with an industry that offers healthy food. </p>
+                          <p>We hope enjoying our offer.</p>
+                      <p>For more info, please contact us by sending an <Link to='#contactus'> e-mail </Link> Or throw whatsapp </p>
                       </div>
                     </Collapse>
                   </>
@@ -53,11 +55,11 @@ function Offerss() {
               </div>
               <div className='col-md-4'>
                   <div className='card shadow'>
-                      <img src={romanticOffer} className="w-100 border-bottom" alt=" " />
+                      <img src={samTours} className="w-100 border-bottom" alt=" " />
                       <div className='card-body'>
-                          <h4>Romantic Offer</h4>
-                          <p>Sara Booking welcomes couples to be pampered in style with this special romantic package,
-                             perfect to celebrate a special event or to just enjoy the weekend.</p>
+                          <h4>Tourists Offer</h4>
+
+                          <p> We are a customer service oriented travel agency trending to the needs of corporate and non-corporate clients alike.</p>
 
                           <>
                           <Button
@@ -72,12 +74,15 @@ function Offerss() {
                     <Collapse in={open2}>
                       <div id="example-collapse-text">
                         <p></p>
-                     <p> Whether you plan to celebrate an occasion or simply want to spend quality time away from home, the Sara Booking is the perfect place for you!</p>
 
-                      <p>Romantic package includes:</p>
+                     <p> In this special offer, Sam Tours lb can simply book for you a ticket to Lebanon. As much as, it provide a tourist plan
+                      containing tourist advisor. </p>
 
-                    <p>A welcome gift, full breakfast, complimentary use of the sauna and steam room, Opera/ theatre tickets, VAT.</p>
-                     <p> <p>To book the Romantic package, please contact us by sending an <Link to='#contactus'> e-mail </Link> </p></p>
+                      <p> If you want to know more about this industry, check this link: 
+                      https://www.facebook.com/SamTourslb?mibextid=ZbWKwL  </p>
+
+                    
+                     <p> <p>For more info, please contact us by sending an <Link to='#contactus'> e-mail </Link> or throw whatsapp: 71563090 </p></p>
                       </div>
                     </Collapse>
                   </>
