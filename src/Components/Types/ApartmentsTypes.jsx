@@ -8,6 +8,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 
 
@@ -30,6 +32,23 @@ return(
 <NavBarMin/>
 
 {cityList.map((val,key)=>{
+
+  const bookFunction = () => {
+    const reserved = val.Reserved;
+    if(reserved == 0){
+      alert("SORRY! This selected room is booked, please choose another one - THANK YOU :) ");
+      console.log("okk")
+    }
+
+    else{
+  
+      alert("Please send us an email with all ur information to book your choosen room, THANK YOU :) ");
+      console.log(" HAHA");
+      
+    }
+  }
+
+  
   return(
     <div className="searchItem" key={key}>
        <div className="siImg">
@@ -115,7 +134,7 @@ return(
       <div className="siDetailTexts">
         <span className="siPrice"> {val.Price}$ per night </span>
         <span className="siTaxOp">Includes taxes and fees</span>
-        <button className="siCheckButton">Book Now</button>
+        <button className="siCheckButton" onClick={bookFunction}>Book Now</button>
       </div> 
     </div>
   </div>
