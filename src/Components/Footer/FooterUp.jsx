@@ -38,8 +38,8 @@ const Footerup=() => {
                         <hr/>
                         <div> <Link to="">LinkedIn</Link>  </div>
                         <div> <Link to="/">GitHub</Link>  </div>
-                        <div> <Link to="/">Facebook</Link>  </div>
-                        <div> <Link to="/">Instagram</Link>  </div>
+                        <div> Phone number: 71563090 </div>
+                        <div> Email: sarasaddik880@gmail.com </div>
 
                     </div>
                     <div className='col-md-4'>

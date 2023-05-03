@@ -7,7 +7,7 @@ import Axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
-
+import Footerup from "../../Components/Footer/FooterUp"; 
 
 
 function Villas_Types() {
@@ -111,7 +111,7 @@ return (
       <button>{val.View}</button>
     </div>
     <div className="siDetailTexts">
-      <span className="siPrice">{val.Price}$ per night</span>
+      <span className="siPrice">{val.Price}$/night</span>
       <span className="siTaxOp">Includes taxes and fees</span>
       <button className="siCheckButton">Book Now</button>
     </div> 
@@ -120,6 +120,7 @@ return (
 
 );
 })}
+<Footerup/>
 </>
 )
 };
