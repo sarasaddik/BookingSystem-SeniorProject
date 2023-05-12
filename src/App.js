@@ -20,6 +20,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import AboutUsMax from "./Components/Home/AboutUsMax";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/Description" element={< AllPlaces/>}/>
 
         <Route path="/hotels/:id" element={<LogInForm/>}/>
+        <Route path="/about" element={<AboutUsMax/>}/>
       </Routes>
     </BrowserRouter>
     </div>

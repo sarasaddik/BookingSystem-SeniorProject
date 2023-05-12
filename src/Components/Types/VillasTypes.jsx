@@ -9,7 +9,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
 import Footerup from "../../Components/Footer/FooterUp"; 
 
-
 function Villas_Types() {
 
   const[cityList, setCityList] = useState([]);
@@ -38,7 +37,7 @@ return (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src= {val.Images}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -49,7 +48,7 @@ return (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src={val.Images2}
           alt="Second slide"
         />
 

@@ -1,8 +1,17 @@
 import React from 'react';
 import "./Home.css";
-import {Link} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
+
 
 function About_us() {
+
+
+    const navigate = useNavigate()
+
+    const goToAbout = () => {
+      navigate("/about")
+    }
+
     return(
 
         
@@ -17,7 +26,8 @@ function About_us() {
                                 paragraph
                                 paragraph
                             </p>
-                            <Link to="/about" className="btn btn-warning shadow">Read More</Link>
+                            {/* <Link to="/about" className="btn btn-warning shadow">Read More</Link> */}
+                           <button onClick={goToAbout}>Read More </button>
 
                         </div>
                     </div>

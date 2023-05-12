@@ -5,7 +5,9 @@ import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
 import Footerup from "../../Components/Footer/FooterUp"; 
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 
 
     const Hotel_Types = () => {
@@ -26,6 +28,22 @@ import Footerup from "../../Components/Footer/FooterUp";
           <NavBarMin/>
 
      {cityList.map((val,key)=>{
+
+const bookFunction = () => {
+  const reserved = val.Reserved;
+    
+  if(reserved == 1){
+    alert("SORRY! This selected room is booked, please choose another one - THANK YOU :) ");
+    console.log("okk")
+  }
+
+  else{
+    alert("Please send us an email with all ur information to book your choosen room, THANK YOU :) ");
+    console.log(" HAHA");    
+
+  }
+  
+}
 
       return (
         
@@ -110,7 +128,7 @@ import Footerup from "../../Components/Footer/FooterUp";
             <div className="siDetailTexts">
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>
-              <button className="siCheckButton">Book Now</button>
+              <button className="siCheckButton" onClick={bookFunction}>Book Now</button>
             </div> 
           </div>
         </div>
