@@ -19,12 +19,27 @@ import Footerup from "../../Components/Footer/FooterUp";
             })
            
         },[0])
+
+        const [Reserved, setReserved] = useState('') 
+
+        const handleBook = (e) => {
+          e.preventDefault();
+          Axios.put(`http://localhost:8800/update`,{Reserved }).then(res => {            
+            console.log(res);            
+                   
+           }).catch(err => console.log(err));      
+        
+        }
+
+
         return(
           <>
 
           <NavBarMin/>
 
      {cityList.map((val,key)=>{
+
+
 
       return (
         
@@ -109,7 +124,7 @@ import Footerup from "../../Components/Footer/FooterUp";
             <div className="siDetailTexts">
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>
-              <button className="siCheckButton">Book Now</button>
+              <button onClick={handleBook} className="siCheckButton">Book Now</button>
             </div> 
           </div>
         </div>
