@@ -141,13 +141,15 @@ app.get(`/description`, (req,res)=>{
 })
 
 app.put('/update', (req, res) => {    
-    const sql = "update city set Reserved = 1";    
-    const values = [req.body.Reserved]    
-    const id = req.params.id;        
+    const sql = "update city set Reserved = 1 WHERE idCity =  ?,?,?,? ";    
+    const values = [req.body.Reserved];   
+    const id = [req.params.id];        
     db.query(sql, [...values, id], (err, data) => {        
         if(err) return res.json("Error");        
         return res.json(data);    
     })})
+
+
 
 
 

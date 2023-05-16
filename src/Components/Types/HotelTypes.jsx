@@ -5,6 +5,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
 import Footerup from "../../Components/Footer/FooterUp"; 
+import { useParams } from "react-router-dom";
 
 
     const Hotel_Types = () => {
@@ -20,12 +21,11 @@ import Footerup from "../../Components/Footer/FooterUp";
            
         },[0])
 
-        const [Reserved, setReserved] = useState('') 
+        const [Reserved, setReserved] = useState(0) ;
 
-        const handleBook = (e) => {
-          e.preventDefault();
-          Axios.put(`http://localhost:8800/update`,{Reserved }).then(res => {            
-            console.log(res);            
+        const handleBook = (id) => {  
+          Axios.put("http://localhost:8800/update",{Reserved}).then((response) => {            
+            alert("booked");            
                    
            }).catch(err => console.log(err));      
         
@@ -38,6 +38,17 @@ import Footerup from "../../Components/Footer/FooterUp";
           <NavBarMin/>
 
      {cityList.map((val,key)=>{
+
+
+function bookFunction() {
+  const reserved = val.Reserved;
+    
+  if(reserved == 1){
+    alert("SORRY! This selected room is booked, please choose another one - THANK YOU :) ");
+    console.log("sorry is booked")
+  }   
+  
+}
 
 
 
@@ -124,11 +135,15 @@ import Footerup from "../../Components/Footer/FooterUp";
             <div className="siDetailTexts">
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>
-              <button onClick={handleBook} className="siCheckButton">Book Now</button>
+              
+              
+              <button onClick={()=>{handleBook(val.idCity)}}
+                className="siCheckButton">Book Now</button> 
+               
             </div> 
           </div>
         </div>
-       
+        
       );
     })}
     <Footerup/>
