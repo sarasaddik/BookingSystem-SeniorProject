@@ -6,7 +6,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
 import Footerup from "../../Components/Footer/FooterUp"; 
 import { useParams } from "react-router-dom";
-
+import { Link } from 'react-router-dom'
 
     const Hotel_Types = () => {
      
@@ -21,10 +21,11 @@ import { useParams } from "react-router-dom";
            
         },[0])
 
-        const [Reserved, setReserved] = useState(0) ;
+        const [Reserved, setReserved] = useState("") ;
 
         const handleBook = (id) => {  
-          Axios.put("http://localhost:8800/update",{Reserved}).then((response) => {            
+          
+          Axios.put("http://localhost:8800/update/" +id,{Reserved, id:id}).then((response) => {            
             alert("booked");            
                    
            }).catch(err => console.log(err));      
@@ -135,10 +136,12 @@ function bookFunction() {
             <div className="siDetailTexts">
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>
+
+              <Link to={`/update/${val.idCity}`} className="siCheckButton">Book Now</Link>
               
               
-              <button onClick={()=>{handleBook(val.idCity)}}
-                className="siCheckButton">Book Now</button> 
+              {/* <button onClick={()=>{handleBook(val.idCity)}}
+                className="siCheckButton">Book Now</button>  */}
                
             </div> 
           </div>

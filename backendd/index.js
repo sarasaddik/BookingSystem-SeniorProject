@@ -140,8 +140,8 @@ app.get(`/description`, (req,res)=>{
     })
 })
 
-app.put('/update', (req, res) => {    
-    const sql = "update city set Reserved = 1 WHERE idCity =  ?,?,?,? ";    
+app.put('/update/:id', (req, res) => {    
+    const sql = "update city set Reserved = 1 WHERE (idCity = 1) OR (idCity = 2) OR (idCity = 3);";    
     const values = [req.body.Reserved];   
     const id = [req.params.id];        
     db.query(sql, [...values, id], (err, data) => {        

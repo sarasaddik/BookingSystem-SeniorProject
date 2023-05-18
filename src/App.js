@@ -32,6 +32,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/cities" element={<Hotell/>}/>
         <Route path="/Hotels" element={< Hotel_Types/>}/>
+        <Route path="/update/:id" element={< Hotel_Types/>}/>
         <Route path="/Apartments" element={< Apartment_Types/>}/>
         <Route path="/resorts" element={< Resort_Types/>}/>
         <Route path="/villas" element={< Villas_Types/>}/>
