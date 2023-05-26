@@ -11,6 +11,7 @@ import Apartment_Types from "./Components/Types/ApartmentsTypes";
 import Resort_Types from "./Components/Types/ResortsTypes";
 import Villas_Types from "./Components/Types/VillasTypes";
 import AllPlaces from "./Components/MoreDescription/ForAll";
+import Book from "./Components/Types/Book";
 
 // import Example from "./Components/LogInForm/Modal";
 
@@ -21,6 +22,7 @@ import {
   Route,
 } from "react-router-dom";
 import AboutUsMax from "./Components/Home/AboutUsMax";
+import Contactus from "./Components/Footer/ContactUs";
 
 function App() {
   return (
@@ -32,7 +34,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/cities" element={<Hotell/>}/>
         <Route path="/Hotels" element={< Hotel_Types/>}/>
-        <Route path="/update/:id" element={< Hotel_Types/>}/>
+        {/* <Route path="/update/:id" element={< Book/>}/> */}
         <Route path="/Apartments" element={< Apartment_Types/>}/>
         <Route path="/resorts" element={< Resort_Types/>}/>
         <Route path="/villas" element={< Villas_Types/>}/>

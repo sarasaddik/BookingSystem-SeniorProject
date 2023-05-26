@@ -37,7 +37,7 @@ return (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src={val.Images}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -48,27 +48,71 @@ return (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src={val.Images2}
           alt="Second slide"
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3></h3>
+          <p></p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src={val.Images3}
           alt="Third slide"
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3></h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+           
           </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images4}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images5}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images6}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images7}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

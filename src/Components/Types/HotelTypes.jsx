@@ -8,6 +8,7 @@ import Footerup from "../../Components/Footer/FooterUp";
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
+
     const Hotel_Types = () => {
      
 
@@ -21,18 +22,6 @@ import { Link } from 'react-router-dom'
            
         },[0])
 
-        const [Reserved, setReserved] = useState("") ;
-
-        const handleBook = (id) => {  
-          
-          Axios.put("http://localhost:8800/update/" +id,{Reserved, id:id}).then((response) => {            
-            alert("booked");            
-                   
-           }).catch(err => console.log(err));      
-        
-        }
-
-
         return(
           <>
 
@@ -41,13 +30,18 @@ import { Link } from 'react-router-dom'
      {cityList.map((val,key)=>{
 
 
-function bookFunction() {
+function handleBook() {
+
   const reserved = val.Reserved;
     
   if(reserved == 1){
     alert("SORRY! This selected room is booked, please choose another one - THANK YOU :) ");
     console.log("sorry is booked")
-  }   
+  }
+  
+  else {
+    alert(" Please send to us an email containing all your needed information to contact with you if the room is available or no, thank you") ;
+  }
   
 }
 
@@ -61,7 +55,7 @@ function bookFunction() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src={val.Images}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -72,27 +66,71 @@ function bookFunction() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src={val.Images2}
           alt="Second slide"
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3></h3>
+          <p></p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+          src={val.Images3}
           alt="Third slide"
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3></h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+           
           </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images4}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images5}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images6}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={val.Images7}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3></h3>
+          <p></p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
@@ -134,14 +172,12 @@ function bookFunction() {
               <button>{val.View}</button>
             </div>
             <div className="siDetailTexts">
+            <span className="">{val.Reserved}</span>
               <span className="siPrice"> {val.Price}$/night</span>
-              <span className="siTaxOp">Includes taxes and fees</span>
-
-              <Link to={`/update/${val.idCity}`} className="siCheckButton">Book Now</Link>
+              <span className="siTaxOp">Includes taxes and fees</span>              
               
-              
-              {/* <button onClick={()=>{handleBook(val.idCity)}}
-                className="siCheckButton">Book Now</button>  */}
+              <button onClick={handleBook}
+                className="siCheckButton">Book Now</button> 
                
             </div> 
           </div>

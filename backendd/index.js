@@ -140,13 +140,21 @@ app.get(`/description`, (req,res)=>{
     })
 })
 
+app.get('/edit/:id', (req,res) => {
+    const sql = "Select * From city Where idCity = ?";
+    const id = req.params.id;
+    db.query(sql,[id], (err, result)=>{
+        if(err) return res.json({Error:err});
+        return res.json(result);
+    })
+})
+
 app.put('/update/:id', (req, res) => {    
-    const sql = "update city set Reserved = 1 WHERE (idCity = 1) OR (idCity = 2) OR (idCity = 3);";    
-    const values = [req.body.Reserved];   
-    const id = [req.params.id];        
-    db.query(sql, [...values, id], (err, data) => {        
+    const sql = "Update city set `Reserved` = ? WHERE idCity = ?";    
+    const id = req.params.id;           
+    db.query(sql, [req.body.Reserved, id], (err, result) => {        
         if(err) return res.json("Error");        
-        return res.json(data);    
+        return res.json({booked: true});    
     })})
 
 
