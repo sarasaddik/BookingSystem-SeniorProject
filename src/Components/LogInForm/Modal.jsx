@@ -5,6 +5,8 @@ import { Formik } from "formik";
 import Form from 'react-bootstrap/Form';
 // import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
+import emailjs from 'emailjs-com';
+
 import "./LogIn.css"
 
 const Example=()=> (
@@ -44,6 +46,18 @@ const Example=()=> (
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_j8lfohl', 'template_vdm427k', e.target, 'E3kiHMMD0TDkV48RZ')
+    .then(res=>{
+        console.log(res.text);
+    }, (error)=>{
+        console.log(error.text);
+    });
+    e.target.reset();
+}
+
   return (
     <>
       <Button variant="secondary" onClick={handleShow}>
@@ -52,7 +66,7 @@ const Example=()=> (
 
       <Modal show={show} onHide={handleClose}>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={sendEmail}>
       <Modal.Header closeButton>
           <Modal.Title>Sign in or create an account</Modal.Title>
         </Modal.Header>
@@ -85,7 +99,9 @@ const Example=()=> (
           )}
           </Modal.Body>
           <Modal.Footer>
-          <button type="submit" disabled={isSubmitting} onClick={handleClose}>
+          <button type="submit" disabled={isSubmitting} 
+          onClick={handleClose}
+          >
             Sign in
           </button>
           </Modal.Footer>
@@ -100,3 +116,4 @@ const Example=()=> (
 );
 
 export default Example;
+
