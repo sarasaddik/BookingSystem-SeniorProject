@@ -34,12 +34,10 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/cities" element={<Hotell/>}/>
         <Route path="/Hotels" element={< Hotel_Types/>}/>
-        {/* <Route path="/update/:id" element={< Book/>}/> */}
         <Route path="/Apartments" element={< Apartment_Types/>}/>
         <Route path="/resorts" element={< Resort_Types/>}/>
         <Route path="/villas" element={< Villas_Types/>}/>
         <Route path="/Description" element={< AllPlaces/>}/>
-
         <Route path="/hotels/:id" element={<LogInForm/>}/>
         <Route path="/about" element={<AboutUsMax/>}/>
       </Routes>

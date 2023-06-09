@@ -149,12 +149,16 @@ app.get('/edit/:id', (req,res) => {
     })
 })
 
-app.put('/update/:id', (req, res) => {    
-    const sql = "Update city set `Reserved` = ? WHERE idCity = ?";    
-    const id = req.params.id;           
-    db.query(sql, [req.body.Reserved, id], (err, result) => {        
-        if(err) return res.json("Error");        
-        return res.json({booked: true});    
+app.put("/update", (req, res) => {  
+    const id = req.body.id; 
+    const Reserved = req.body.Reserved; 
+    const sql = "Update city set Reserved = ? WHERE idCity = ?";    
+    db.query(sql, [Reserved, id], (err, result) => {        
+        if(err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }  
     })})
 
 

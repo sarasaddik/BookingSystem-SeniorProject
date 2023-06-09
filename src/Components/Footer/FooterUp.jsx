@@ -25,8 +25,6 @@ const Footerup=() => {
                     <div className='col-md-4'>
                         <h6>Social Media</h6>
                         <hr/>
-                        <div> <Link to="">LinkedIn</Link>  </div>
-                        <div> <Link to="/">GitHub</Link>  </div>
                         <div> Phone number: 71563090 </div>
                         <div> Email: sarasaddik880@gmail.com </div>
 

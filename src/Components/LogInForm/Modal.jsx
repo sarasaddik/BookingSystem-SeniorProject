@@ -68,7 +68,7 @@ const Example=()=> (
 
       <form onSubmit={sendEmail}>
       <Modal.Header closeButton>
-          <Modal.Title>Sign in or create an account</Modal.Title>
+          <Modal.Title>Sign in please</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <label htmlFor="email">Email</label>
