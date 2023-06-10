@@ -51,8 +51,12 @@ function Searchh() {
                    type="text"
                    placeholder="where are you going?"
                    className="headerSearchInput"
+                   hint="For example, flowers or used cars"
                    onChange={e=>setDestination(e.target.value)}
                    />
+    <span id='textExample2' className='form-text'>
+            Beirut, Koura, Jbeil, Batroun, Farayya.
+          </span>
             </div>
             {/* <div className="headerSearchItem">
                 <span onClick={()=>setOpenDate(!openDate)} className="headerSearchText">{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")} `}</span>

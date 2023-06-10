@@ -13,6 +13,7 @@ import Footerup from "../../Components/Footer/FooterUp";
 function Resort_Types() {
 
   const[cityList, setCityList] = useState([]);
+  const [newBook, setNewBook] = useState('');
 
 
   useEffect(() => {
@@ -28,6 +29,30 @@ return(
 <NavBarMin/>
 
 {cityList.map((val,key)=>{
+
+const bookFunction = (id) => {
+  const check = val.Reserved;
+
+    
+  if(newBook.toLowerCase() =='book' && check !='book'){
+    Axios.put("http://localhost:8800/update", {Reserved: newBook, id: id}).then((response)=>{
+      alert('Your room is reserved successfully. For cancellation please contact us, Thank you')
+    })
+    window.location.reload();
+  }
+
+  else if(check == 'book'){
+   alert('Your selection is booked by another guest, please choose another one, Thank you')   
+   window.location.reload();
+
+  }
+  else{
+    alert("Please write 'book' to reserve your selected room, Thank you");
+    console.log(" HAHA");    
+    window.location.reload();
+  }
+  
+}
 
 return (
 
@@ -156,7 +181,11 @@ return (
     <div className="siDetailTexts">
       <span className="siPrice">{val.Price}$/night</span>
       <span className="siTaxOp">Includes taxes and fees</span>
-      <button className="siCheckButton">Book Now</button>
+      <input type='text' placeholder="Type 'book' for reservation..." onChange={(event)=>{
+          setNewBook(event.target.value)
+        }}
+        />
+      <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
     </div> 
   </div>
 </div>

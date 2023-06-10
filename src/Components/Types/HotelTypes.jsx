@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
      
 
       const[cityList, setCityList] = useState([]);
+      const [newBook, setNewBook] = useState('');
 
       useEffect(() => {
             Axios.get(`http://localhost:8800/types/hotel`).then((response) =>{
@@ -29,22 +30,29 @@ import { Link } from 'react-router-dom'
 
      {cityList.map((val,key)=>{
 
+const bookFunction = (id) => {
+  const check = val.Reserved;
 
-function handleBook() {
-
-  const reserved = val.Reserved;
     
-  if(reserved == 1){
-    alert("SORRY! This selected room is booked, please choose another one - THANK YOU :) ");
-    console.log("sorry is booked")
+  if(newBook.toLowerCase() =='book' && check !='book'){
+    Axios.put("http://localhost:8800/update", {Reserved: newBook, id: id}).then((response)=>{
+      alert('Your room is reserved successfully. For cancellation please contact us, Thank you')
+    })
+    window.location.reload();
   }
-  
-  else {
-    alert(" Please send to us an email containing all your needed information to contact with you if the room is available or no, thank you") ;
+
+  else if(check == 'book'){
+   alert('Your selection is booked by another guest, please choose another one, Thank you')   
+   window.location.reload();
+
+  }
+  else{
+    alert("Please write 'book' to reserve your selected room, Thank you");
+    console.log(" HAHA");    
+    window.location.reload();
   }
   
 }
-
 
 
       return (
@@ -175,9 +183,12 @@ function handleBook() {
             <span className="">{val.Reserved}</span>
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>              
-              
-              <button onClick={handleBook}
-                className="siCheckButton">Book Now</button> 
+              <input type='text' placeholder="Type 'book' for reservation..." onChange={(event)=>{
+          setNewBook(event.target.value)
+        }}
+        />
+              <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
+              <h1>status: {val.Reserved}</h1>
                
             </div> 
           </div>

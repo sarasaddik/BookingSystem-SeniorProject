@@ -15,7 +15,6 @@ function Hotell() {
   const {state} = useLocation();
 
   const [newBook, setNewBook] = useState('');
-  const[Reserved, setReserved] = useState('');
 
 
   useEffect(() => {

@@ -14,6 +14,7 @@ import Alert from 'react-bootstrap/Alert';
      
 
       const[cityList, setCityList] = useState([]);
+      const [newBook, setNewBook] = useState('');
 
       useEffect(() => {
             Axios.get(`http://localhost:8800/types/hotel`).then((response) =>{
@@ -29,18 +30,26 @@ import Alert from 'react-bootstrap/Alert';
 
      {cityList.map((val,key)=>{
 
-const bookFunction = () => {
-  const reserved = val.Reserved;
+const bookFunction = (id) => {
+  const check = val.Reserved;
+
     
-  if(reserved == 1){
-    alert("SORRY! This selected room is booked, please choose another one - THANK YOU :) ");
-    console.log("okk")
+  if(newBook.toLowerCase() =='book' && check !='book'){
+    Axios.put("http://localhost:8800/update", {Reserved: newBook, id: id}).then((response)=>{
+      alert('Your room is reserved successfully. For cancellation please contact us, Thank you')
+    })
+    window.location.reload();
   }
 
-  else{
-    alert("Please send us an email with all ur information to book your choosen room, THANK YOU :) ");
-    console.log(" HAHA");    
+  else if(check == 'book'){
+   alert('Your selection is booked by another guest, please choose another one, Thank you')   
+   window.location.reload();
 
+  }
+  else{
+    alert("Please write 'book' to reserve your selected room, Thank you");
+    console.log(" HAHA");    
+    window.location.reload();
   }
   
 }
@@ -172,7 +181,11 @@ const bookFunction = () => {
             <div className="siDetailTexts">
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>
-              <button className="siCheckButton" onClick={bookFunction}>Book Now</button>
+              <input type='text' placeholder="Type 'book' for reservation..." onChange={(event)=>{
+          setNewBook(event.target.value)
+        }}
+        />
+              <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
             </div> 
           </div>
         </div>
