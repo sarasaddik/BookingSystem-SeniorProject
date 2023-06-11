@@ -36,7 +36,7 @@ export default function AboutUsMax() {
     <div style={{marginTop: '100px'}}>
       <h1>
         <p> <b>I am Sara Saddik, the owner of this website. </b> </p>
-      <b> <p> I'm a graduate student in department of Computer Science at AUCE University </p>
+      <b> <p> I'm a graduate student in department of Computer Science at AUCE; </p>
         <p>This is my senior project which is about Booking rooms, apartments or hotels.</p>
         <p>The high demand for residential reservation from locals and tourists,
            which is accompanied by numerous problems such as the authentication and quality of service,

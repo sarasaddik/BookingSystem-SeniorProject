@@ -149,26 +149,29 @@ app.get('/edit/:id', (req,res) => {
     })
 })
 
-app.put("/update", (req, res) => {  
-    const id = req.body.id; 
-    const Reserved = req.body.Reserved; 
-    const sql = "Update city set Reserved = ? WHERE idCity = ?";    
-    db.query(sql, [Reserved, id], (err, result) => {        
-        if(err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }  
-    })})
+// app.put("/update", (req, res) => {  
+//     const id = req.body.id; 
+//     const Reserved = req.body.Reserved; 
+//     const sql = "Update city set Reserved = ? WHERE idCity = ?";    
+//     db.query(sql, [Reserved, id], (err, result) => {        
+//         if(err) {
+//             console.log(err);
+//         } else {
+//             res.send(result);
+//         }  
+//     })})
 
-
-
-
-
-
-
-
-
+    app.put("/update", (req, res) => {  
+        const id = req.body.id; 
+        const sql = "Update city set Reserved = 'book' WHERE idCity = ?";    
+        db.query(sql, [ id], (err, result) => {        
+            if(err) {
+                console.log(err);
+            } else {
+                res.send(result);
+            }  
+        })})
+    
 
 app.listen(8800, () => {
     console.log("connecteddd!")
