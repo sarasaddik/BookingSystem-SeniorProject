@@ -11,7 +11,7 @@ function NavBarMin() {
   const navigate = useNavigate()
 
       const backToHome = () => {
-        navigate("/")
+        navigate("/Home")
       }
   return (
     
