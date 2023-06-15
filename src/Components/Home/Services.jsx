@@ -83,7 +83,7 @@ function Servicess() {
               <div className="card shadow">
                 <img src={checkingRoom} className="w-100 border-bottom" alt=" " />
                 <div className="card-body">
-                  <h6>Inspectation service</h6>
+                  <h6>Inspection service</h6>
                   <h4> Rooms Inspectation</h4>
                   <>
                     <Button
