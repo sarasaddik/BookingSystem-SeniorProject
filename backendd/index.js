@@ -21,7 +21,7 @@ app.get("/", (req,res)=>{
 
 
 app.get("/cities", (req,res)=>{
-    const q = "SELECT * FROM city"
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -32,9 +32,8 @@ app.get("/cities", (req,res)=>{
 })
 
 app.get(`/cities/beirut`, (req,res)=>{
-    //const q = "SELECT * FROM city WHERE cityName='beirut' "
-    const q = "select * from cityy c INNER JOIN citydescription cd ON c.cityyName = cd.cityyName WHERE c.cityyName IN ('Beirut')"
-    db.query(q, (err,data)=>{
+ const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.cityyName='beirut'"  
+ db.query(q, (err,data)=>{
         if (err){
             console.log(err)
         }else{
@@ -42,8 +41,20 @@ app.get(`/cities/beirut`, (req,res)=>{
         }
     })
 })
+
+app.get('/edit/:id', (req,res) => {
+    const sql = "Select * From city Where idCity = ?";
+    const id = req.params.id;
+    db.query(sql,[id], (err, result)=>{
+        if(err) return res.json({Error:err});
+        return res.json(result);
+    })
+})
+
 app.get(`/cities/koura`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE cityName='koura' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.cityyName='Koura'"  
+
+  //  const q = "SELECT * FROM city WHERE cityName='koura' "
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -54,7 +65,7 @@ app.get(`/cities/koura`, (req,res)=>{
 })
 
 app.get(`/cities/batroun`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE cityName='batroun' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.cityyName='batroun'"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -65,7 +76,7 @@ app.get(`/cities/batroun`, (req,res)=>{
 })
 
 app.get(`/cities/jbeil`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE cityName='jbeil' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.cityyName='jbeil'"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -76,7 +87,7 @@ app.get(`/cities/jbeil`, (req,res)=>{
 })
 
 app.get(`/cities/Farayya`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE cityName='Farayya' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.cityyName='farayya'"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -87,7 +98,7 @@ app.get(`/cities/Farayya`, (req,res)=>{
 })
 
 app.get(`/types/hotel`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE Type='hotel' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='hotel'"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -98,7 +109,7 @@ app.get(`/types/hotel`, (req,res)=>{
 })
 
 app.get(`/types/apartment`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE Type='apartment' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment'"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -109,7 +120,7 @@ app.get(`/types/apartment`, (req,res)=>{
 })
 
 app.get(`/types/resorts`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE Type='resort' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='resort'"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -120,7 +131,7 @@ app.get(`/types/resorts`, (req,res)=>{
 })
 
 app.get(`/types/villas`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE Type='villa' "
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='villa'"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -164,7 +175,7 @@ app.get('/edit/:id', (req,res) => {
 
     app.put("/update", (req, res) => {  
         const id = req.body.id; 
-        const sql = "Update city set Reserved = 'book' WHERE idCity = ?";    
+        const sql = "Update citydescription set Reserved = 'book' WHERE idCityy = ?";    
         db.query(sql, [ id], (err, result) => {        
             if(err) {
                 console.log(err);

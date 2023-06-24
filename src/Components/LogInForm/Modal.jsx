@@ -1,119 +1,74 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Formik } from "formik";
+import React from 'react';
 import Form from 'react-bootstrap/Form';
-// import * as EmailValidator from "email-validator";
-import * as Yup from "yup";
-import emailjs from 'emailjs-com';
 
-import "./LogIn.css"
-
-const Example=()=> (
-
-  <Formik id='LogIn'
-  initialValues={{ email: "", password: "" }}
-  onSubmit={(values, { setSubmitting }) => {
-    setTimeout(() => {
-      console.log("Logging in", values);
-      setSubmitting(false);
-    }, 500);
-  }}
-  
-  validationSchema={Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required("Required"),
-    password: Yup.string()
-      .required("No password provided.")
-      .min(8, "Password is too short - should be 8 chars minimum.")
-      .matches(/(?=.*[0-9])/, "Password must contain a number.")
-  })}
->
-  {props => {
-    const {
-      values,
-      touched,
-      errors,
-      isSubmitting,
-      handleChange,
-      handleBlur,
-      handleSubmit
-    } = props;
-
+function Example() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const [fName, setfName] = useState("");
+  const [lName, setlName] = useState("");
+  const [nbr, setnbr] = useState("");
+  const [email, setemail] = useState("");
 
-    emailjs.sendForm('service_j8lfohl', 'template_vdm427k', e.target, 'E3kiHMMD0TDkV48RZ')
-    .then(res=>{
-        console.log(res.text);
-    }, (error)=>{
-        console.log(error.text);
-    });
-    e.target.reset();
-}
+
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}>
-        LogIn
+      <Button variant="primary" onClick={handleShow}>
+        Register
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-
-      <form onSubmit={sendEmail}>
-      <Modal.Header closeButton>
-          <Modal.Title>Sign in please</Modal.Title>
+        <Modal.Header closeButton>
+          <Modal.Title>Register please</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="text"
-            placeholder="Enter your email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.email && touched.email && "error"}
-          />
-          {errors.email && touched.email && (
-            <div className="input-feedback">{errors.email}</div>
-          )}
-          <label htmlFor="email">Password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            value={values.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.password && touched.password && "error"}
-          />
-          {errors.password && touched.password && (
-            <div className="input-feedback">{errors.password}</div>
-          )}
-          </Modal.Body>
-          <Modal.Footer>
-          <button type="submit" disabled={isSubmitting} 
-          onClick={handleClose}
-          >
-            Sign in
-          </button>
-          </Modal.Footer>
-        </form>
+        <Form>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
+      <Form.Label>Username</Form.Label>
+        <Form.Control type="username" placeholder="Enter your first name please" 
+        onChange={(event) =>{
+          setfName(event.target.value);
+        }} />
+
+        <Form.Label>LastName</Form.Label>
+        <Form.Control type="lastname" placeholder="Enter your last name please"
+         onChange={(event) =>{
+          setlNameName(event.target.value);
+        }} />
+
+        <Form.Label>Phone number</Form.Label>
+        <Form.Control type="phone number" placeholder="Enter your phone number " 
+        onChange={(event) =>{
+          setnbr(event.target.value);
+        }}/>
+
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="name@example.com" 
+        onChange={(event) =>{
+          setemail(event.target.value);
+        }}/>
+
+      </Form.Group>
+    </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
       </Modal>
-      
     </>
-    
   );
-} }
-</Formik>
-);
+}
 
 export default Example;
-

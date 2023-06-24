@@ -140,7 +140,7 @@ return (
     className="siImg"
   /> */}
   <div className="siDesc">
-    <h1 className="siTitle">{val.cityName} , {val.Type} </h1>
+    <h1 className="siTitle">{val.cityyName} , {val.type} </h1>
     <h5 className="siName"><b>{val.Name}</b></h5>
     <span className="siTaxiOp">Free airport taxi</span>
     <span className="siSubtitle">
