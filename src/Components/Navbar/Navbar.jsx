@@ -17,6 +17,8 @@ function NavBar() {
         <Nav.Link href="#aboutus">About Us</Nav.Link>
         <Nav.Link href="#service">Services</Nav.Link>
         <Nav.Link href="#offers">Offers</Nav.Link>
+        <Nav.Link href="#contactus">Contact us</Nav.Link>
+
         {/* <div className="login">
         <Nav.Link href="#LogIn" > <Example/></Nav.Link>
         </div> */}

@@ -17,7 +17,7 @@ import Alert from 'react-bootstrap/Alert';
       const [newBook, setNewBook] = useState('');
 
       useEffect(() => {
-            Axios.get(`http://localhost:8800/types/hotel`).then((response) =>{
+            Axios.get(`http://localhost:8800/types/apartment`).then((response) =>{
               setCityList(response.data)
               console.log(response)
             })

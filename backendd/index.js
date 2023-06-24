@@ -32,7 +32,8 @@ app.get("/cities", (req,res)=>{
 })
 
 app.get(`/cities/beirut`, (req,res)=>{
-    const q = "SELECT * FROM city WHERE cityName='beirut' "
+    //const q = "SELECT * FROM city WHERE cityName='beirut' "
+    const q = "select * from cityy c INNER JOIN citydescription cd ON c.cityyName = cd.cityyName WHERE c.cityyName IN ('Beirut')"
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
