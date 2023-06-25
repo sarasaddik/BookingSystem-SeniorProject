@@ -200,6 +200,18 @@ app.get('/edit/:id', (req,res) => {
              })
         })
     
+        app.post('/login', (req, res) => {
+            const email = req.body.email
+
+            db.query('INSERT INTO loginuser (email) VALUES(?)',
+             [email], (err, result) =>{
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.send("VALUES INSERTED")
+                }
+             })
+        })
 
 app.listen(8800, () => {
     console.log("connecteddd!")

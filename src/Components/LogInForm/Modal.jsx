@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import {useEffect} from "react";
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
-import Form from 'react-bootstrap/Form';
-import Axios from 'axios';
-import axios from 'axios';
+import {useNavigate} from "react-router-dom"
 
-function Example() {
-  const [show, setShow] = useState(false);
+
+  const Example = () => {
+ 
+    const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,6 +30,14 @@ const addUser = () => {
     console.log("SUCCESS")
   })
 }
+
+const navigate = useNavigate();
+
+      const addProp = () => {
+        navigate("/new");
+       
+      }
+
 
   return (
     <>
@@ -76,10 +87,14 @@ const addUser = () => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
+          <Button variant="secondary" onClick={addProp}>
+            Add property
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
-  );
+  )
+
 }
 
 export default Example;

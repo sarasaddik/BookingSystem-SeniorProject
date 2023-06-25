@@ -11,6 +11,8 @@ import Apartment_Types from "./Components/Types/ApartmentsTypes";
 import Resort_Types from "./Components/Types/ResortsTypes";
 import Villas_Types from "./Components/Types/VillasTypes";
 import AllPlaces from "./Components/MoreDescription/ForAll";
+import addingProperties from "./Components/Home/addProperty";
+
 import Book from "./Components/Types/Book";
 
 // import Example from "./Components/LogInForm/Modal";
@@ -41,6 +43,7 @@ function App() {
         <Route path="/Description" element={< AllPlaces/>}/>
         <Route path="/hotels/:id" element={<LogInForm/>}/>
         <Route path="/about" element={<AboutUsMax/>}/>
+        <Route path="/new" element={<addingProperties/>}/>
       </Routes>
     </BrowserRouter>
     </div>

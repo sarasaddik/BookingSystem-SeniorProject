@@ -5,7 +5,10 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import {useNavigate} from "react-router-dom"
 import emailjs from 'emailjs-com';
-
+import { useState } from 'react';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const LogInForm = () => (
   
@@ -67,6 +70,23 @@ const LogInForm = () => (
         navigate("/Home")
 
       }
+
+      const [email, setemail] = useState("");
+      const addLogin = (event) => {
+        event.preventDefault();
+
+    if (email.trim().length == 0) {
+      alert("Please fill your email address")
+    }
+      else{
+
+        axios.post(`http://localhost:8800/login`, {
+          email: email,
+        }).then(() =>{
+          console.log("SUCCESS")
+        })
+      }
+    }
       
 
       return (
@@ -80,51 +100,28 @@ const LogInForm = () => (
         justifyContent: 'center',
         height: '70vh',
       }}>
-        <form onSubmit={sendEmail}>
-          <div style={{color: "white"}}>
-            Sign in please...
-          </div>
-          <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="text"
-            placeholder="Enter your email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.email && touched.email && "error"}
-          />
-          {errors.email && touched.email && (
-            <div className="input-feedback">{errors.email}</div>
-          )}
-          <label htmlFor="email">Password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            value={values.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.password && touched.password && "error"}
-          />
-          {errors.password && touched.password && (
-            <div className="input-feedback">{errors.password}</div>
-          )}
-          <div className="button1">
-          <button id="sign" type="submit" disabled={isSubmitting}>
-            Sign in...
-          </button> </div>
-            <div>
-              <div>
+       <Form onSubmit={sendEmail}>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
-                
-              </div>
-            </div>
-          <div className="button2">
-          <button id="cancel" onClick={handleSign}>
-            Cancel
-          </button> </div>
-        </form>
+      <Form.Label>Email address</Form.Label>
+        <Form.Control type="username" placeholder="Enter your email please" name="email"
+        onChange={(event) =>{
+          setemail(event.target.value);
+        }} required />
+
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Enter your password"
+         
+         />
+
+      <Button variant="primary" type='Submit' value="Submit"  onClick={addLogin}>
+            Login
+          </Button>
+      </Form.Group>
+          <Button variant="primary" onClick={handleSign}>
+            cancel
+          </Button>
+    </Form>
         </div>
         </div>
       );
