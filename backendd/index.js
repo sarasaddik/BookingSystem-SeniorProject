@@ -213,6 +213,32 @@ app.get('/edit/:id', (req,res) => {
              })
         })
 
+        app.post('/addprp', (req, res) => {
+            const name = req.body.name
+
+            db.query('INSERT INTO cityy (cityyNames) VALUES(?)',
+             [name], (err, result) =>{
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.send("VALUES INSERTED")
+                }
+             })
+        })
+
+        app.post('/addprpp', (req, res) => {
+            const nbr = req.body.nbr
+
+            db.query('INSERT INTO citydescription (roomsNumber) VALUES(?)',
+             [nbr], (err, result) =>{
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.send("VALUES INSERTED")
+                }
+             })
+        })
+
 app.listen(8800, () => {
     console.log("connecteddd!")
 })

@@ -87,9 +87,7 @@ const navigate = useNavigate();
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="secondary" onClick={addProp}>
-            Add property
-          </Button>
+          <button onClick={addProp}>Add Property </button>
         </Modal.Footer>
       </Modal>
     </>
