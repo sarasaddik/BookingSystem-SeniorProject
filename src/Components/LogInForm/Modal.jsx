@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React from 'react';
 import Form from 'react-bootstrap/Form';
+import Axios from 'axios';
+import axios from 'axios';
 
 function Example() {
   const [show, setShow] = useState(false);
@@ -15,7 +17,16 @@ function Example() {
   const [nbr, setnbr] = useState("");
   const [email, setemail] = useState("");
 
-
+const addUser = () => {
+  axios.post(`http://localhost:8800/register`, {
+    fName: fName,
+    lName : lName,
+    nbr: nbr,
+    email: email
+  }).then(() =>{
+    console.log("SUCCESS")
+  })
+}
 
   return (
     <>
@@ -28,7 +39,7 @@ function Example() {
           <Modal.Title>Register please</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
+        <Form onSubmit={addUser}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
       <Form.Label>Username</Form.Label>
@@ -40,7 +51,7 @@ function Example() {
         <Form.Label>LastName</Form.Label>
         <Form.Control type="lastname" placeholder="Enter your last name please"
          onChange={(event) =>{
-          setlNameName(event.target.value);
+          setlName(event.target.value);
         }} />
 
         <Form.Label>Phone number</Form.Label>
@@ -56,14 +67,14 @@ function Example() {
         }}/>
 
       </Form.Group>
+          <Button variant="primary" type='Submit' value="Submit">
+            register
+          </Button>
     </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>

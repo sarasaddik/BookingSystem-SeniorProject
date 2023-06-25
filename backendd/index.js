@@ -183,6 +183,22 @@ app.get('/edit/:id', (req,res) => {
                 res.send(result);
             }  
         })})
+
+        app.post('/register', (req, res) => {
+            const fName = req.body.fName
+            const lName = req.body.lName
+            const nbr = req.body.nbr
+            const email = req.body.email
+
+            db.query('INSERT INTO users (Username, UserLastNAme, phoneNumber, email) VALUES(?,?,?,?)',
+             [fName, lName, nbr, email], (err, result) =>{
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.send("VALUES INSERTED")
+                }
+             })
+        })
     
 
 app.listen(8800, () => {
