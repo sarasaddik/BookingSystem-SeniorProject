@@ -214,10 +214,33 @@ app.get('/edit/:id', (req,res) => {
         })
 
         app.post('/addprp', (req, res) => {
-            const name = req.body.name
+            const rooms = req.body.rooms;
+            const location = req.body.location;
+            const review = req.body.review;
+            const price = req.body.price;
+            const desc = req.body.desc;
+            const moredesc = req.body.moredesc;
+            const view = req.body.view;
+            const cityname = req.body.cityname;
+            const types = req.body.types;
 
-            db.query('INSERT INTO cityy (cityyNames) VALUES(?)',
-             [name], (err, result) =>{
+            db.query('INSERT INTO citydescription (roomsNumber, Location, Review, Price, `Desc`, MoreDesc, `View`, cityyName, type) VALUES(?,?,?,?,?,?,?,?,?)',
+             [rooms,location,review,price,desc,moredesc,view,cityname,types], (err, result) =>{
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.send("VALUES INSERTED");
+                };
+             });
+        });
+
+        app.post('/addprpp', (req, res) => {
+            const cityname = req.body.cityname
+            const types = req.body.types
+            const mainName = req.body.mainName
+
+            db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
+             [cityname,types,mainName], (err, result) =>{
                 if(err) {
                     console.log(err)
                 } else {
@@ -226,17 +249,15 @@ app.get('/edit/:id', (req,res) => {
              })
         })
 
-        app.post('/addprpp', (req, res) => {
-            const nbr = req.body.nbr
-
-            db.query('INSERT INTO citydescription (roomsNumber) VALUES(?)',
-             [nbr], (err, result) =>{
-                if(err) {
+        app.get(`/user`, (req,res)=>{
+            const q = "select * from users"  
+            db.query(q, (err,data)=>{
+                if (err){
                     console.log(err)
-                } else {
-                    res.send("VALUES INSERTED")
+                }else{
+                    res.send(data)
                 }
-             })
+            })
         })
 
 app.listen(8800, () => {
