@@ -18,16 +18,50 @@ const Example = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // if (myButton) {
+    //   myButton.disabled = true;
+    // }
+    
+    
+  // const enable = () => {
+    //   if (myButton) {
+  //   setTimeout(() => {
+  //     myButton.disabled = false;
+  //   }, 3000);
+  //   setTimeout(() => {
+  //     window.location.href = "http://localhost:3000/new";;
+  //   }, 10000);
+  // }
+  // }
+  
+  const myButton = document.getElementById("addProp");
+  
   const addUser = () => {
+    if(fName.trim().length == 0 || lName.trim().length ==0 || nbr.trim().length ==0 || email.trim().length ==0){
+      alert("Please fill all the fields");
+      myButton.disabled = true;
+    }
+    else{
     axios.post(`http://localhost:8800/register`, {
       fName: fName,
       lName: lName,
       nbr: nbr,
       email: email
     }).then(() => {
-      console.log("SUCCESS")
-    })
+      console.log("SUCCESS");
+      myButton.disabled = false; // Enable the button after successful form submission
+    }).catch((error) => {
+      console.error(error);
+      myButton.disabled = false; // Enable the button after error
+    });
   }
+
+  myButton.addEventListener("click", () => {
+    // Navigate to another page
+    window.location.href = "http://localhost:3000/new";
+  });
+
+}
 
   useEffect(() => {
     axios.get(`http://localhost:8800/user`).then((response) => {
@@ -36,12 +70,18 @@ const Example = () => {
     })
   }, [0])
 
- const navigate = useNavigate();
+  
 
-  const addProp = () => {
+const navigate = useNavigate();
+
+ const addProp = () => {
+   
+    navigate("/new");
+   
+ }
     
-     navigate("/new");
-  }
+ 
+
 
 
   return (
@@ -54,21 +94,21 @@ const Example = () => {
           <Modal.Title>Register please</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form  onSubmit={addUser}>
+          <Form id="myForm"  onSubmit={addUser}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Username</Form.Label>
+              <Form.Label type="text" id='username'>Username</Form.Label>
               <Form.Control type="username" placeholder="Enter your first name please"
                 onChange={(event) => {
                   setfName(event.target.value);
                 }} />
 
-              <Form.Label>LastName</Form.Label>
+              <Form.Label type="text" id='lastname'>LastName</Form.Label>
               <Form.Control type="lastname" placeholder="Enter your last name please"
                 onChange={(event) => {
                   setlName(event.target.value);
                 }} />
 
-              <Form.Label>Phone number</Form.Label>
+              <Form.Label type="number" id='Phone number'>Phone number</Form.Label>
               <Form.Control type="phone number" placeholder="Enter your phone number "
                 onChange={(event) => {
                   setnbr(event.target.value);
@@ -80,7 +120,9 @@ const Example = () => {
                   setemail(event.target.value);
                 }} />
             </Form.Group>
-            <Button variant="primary" type='Submit' value="Submit">
+            <Button variant="primary" type='Submit' value="Submit" 
+            // onClick={enable}
+            >
               register
             </Button>
           </Form>
@@ -89,14 +131,13 @@ const Example = () => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <button onClick={addProp} >Add Property </button>
+          
+          <button id='addProp'  onClick={addProp} disabled>Add Property </button>
         </Modal.Footer>
       </Modal>
     </>
   )
               
-       
-  
               
 }
 
