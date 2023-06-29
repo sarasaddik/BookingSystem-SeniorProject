@@ -1,8 +1,13 @@
-
-const express = require('express')
+import express from 'express'
+import mysql2 from 'mysql2';
+//const express = require('express')
 const app = express();
-const mysql2 = require('mysql2')
-const cors = require('cors')
+//const mysql2 = require('mysql2')
+// const cors = require('cors')
+import cors from 'cors'
+
+import multer from 'multer'
+import path from 'path'
 
 app.use(express.json());
 app.use(cors());
@@ -13,6 +18,19 @@ const db = mysql2.createConnection({
     password: "SaraMySql-123",
     database: "booking",
 });
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/images')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({
+    storage: storage
+})
 
 
 app.get("/", (req,res)=>{
@@ -234,19 +252,25 @@ app.get('/edit/:id', (req,res) => {
              });
         });
 
-        app.post('/addprpp', (req, res) => {
+        app.post('/addprpp',upload.single('image'), (req, res) => {
             const cityname = req.body.cityname
             const types = req.body.types
             const mainName = req.body.mainName
+            const image = req.file.filename;
+            const sql = "INSERT INTO images (image) VALUES (?) " ;
+            db.query(sql, [image], (err, result)=>{
+                if(err) return res.json({Message: "Error"});
+                return res.json({Status: "Success"});
+            })
 
-            db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
-             [cityname,types,mainName], (err, result) =>{
-                if(err) {
-                    console.log(err)
-                } else {
-                    res.send("VALUES INSERTED")
-                }
-             })
+            // db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
+            //  [cityname,types,mainName], (err, result) =>{
+            //     if(err) {
+            //         console.log(err)
+            //     } else {
+            //         res.send("VALUES INSERTED")
+            //     }
+            //  })
         })
 
         app.get(`/user`, (req,res)=>{
