@@ -251,7 +251,7 @@ app.get('/edit/:id', (req,res) => {
              })
         })
 
-        app.post('/addprp', upload.single('image'),(req, res) => {
+        app.post('/addpprp', upload.single('image'),(req, res) => {
             const rooms = req.body.rooms;
             const location = req.body.location;
             const review = req.body.review;
@@ -263,8 +263,29 @@ app.get('/edit/:id', (req,res) => {
             const types = req.body.types;
             const image = req.file.filename;
 
-            db.query('INSERT INTO citydescription (roomsNumber, Location, Review, Price, `Desc`, MoreDesc, `View`,`Images`, cityyName, type) VALUES(?,?,?,?,?,?,?,?,?,?)',
+            db.query('INSERT INTO citydescription (`roomsNumber`, Location, Review, Price, `Desc`, MoreDesc, `View`, `Images` , cityyName, type) VALUES(?,?,?,?,?,?,?,?,?,?)',
              [rooms,location,review,price,desc,moredesc,view,image,cityname,types], (err, result) =>{
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.send("VALUES INSERTED");
+                };
+             });
+        });
+
+        app.post('/addprp', (req, res) => {
+            const rooms = req.body.rooms;
+            const location = req.body.location;
+            const review = req.body.review;
+            const price = req.body.price;
+            const desc = req.body.desc;
+            const moredesc = req.body.moredesc;
+            const view = req.body.view;
+            const cityname = req.body.cityname;
+            const types = req.body.types;
+
+            db.query('INSERT INTO citydescription (roomsNumber, Location, Review, Price, `Desc`, MoreDesc, `View` , cityyName, type) VALUES(?,?,?,?,?,?,?,?,?)',
+             [rooms,location,review,price,desc,moredesc,view,cityname,types], (err, result) =>{
                 if(err) {
                     console.log(err);
                 } else {

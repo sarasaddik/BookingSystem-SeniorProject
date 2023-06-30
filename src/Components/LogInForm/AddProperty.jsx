@@ -45,15 +45,15 @@ export default function AddProperty() {
 
   const formdata = new FormData();
   formdata.append('image', file);
-  axios.post(`http://localhost:8800/addprp`, formdata)
-    .then(res => {
-      if (res.data.Status === "Success") {
-        console.log("Succeeded");
-      } else {
-        console.log("Failed");
-      }
-    })
-    .catch(err => console.log(err));
+  // axios.post(`http://localhost:8800/addprp`, formdata)
+  //   .then(res => {
+  //     if (res.data.Status === "Success") { 
+  //       console.log("Succeeded");
+  //     } else {
+  //       console.log("Failed");
+  //     }
+  //   })
+  //   .catch(err => console.log(err));
 
       axios.post(`http://localhost:8800/addprp`, {
         rooms:rooms,
@@ -100,7 +100,9 @@ export default function AddProperty() {
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
 
+
           <Form noValidate onSubmit={handleSubmit}>
+            <h1>Owner</h1>
 
             <Row className="mb-3">
 
