@@ -219,10 +219,11 @@ app.get('/edit/:id', (req,res) => {
         })
     
         app.post('/login', (req, res) => {
-            const email = req.body.email
+            const username = req.body.username
+            const password = req.body.password
 
-            db.query('INSERT INTO loginuser (email) VALUES(?)',
-             [email], (err, result) =>{
+            db.query('INSERT INTO loginuser (username, password) VALUES(?,?)',
+             [username,password], (err, result) =>{
                 if(err) {
                     console.log(err)
                 } else {
@@ -231,7 +232,26 @@ app.get('/edit/:id', (req,res) => {
              })
         })
 
-        app.post('/addprp', (req, res) => {
+        app.post('/sigin', (req, res) => {
+            const username = req.body.username
+            const password = req.body.password
+
+            db.query('SELECT * FROM loginuser WHERE username=? AND password=?',
+             [username,password], (err, result) =>{
+                if(err) {
+                    res.send({err: err})
+                } else {
+                    if(result.length>0) {
+                        res.send(result);
+                    } else {
+                        res.send({message: "User not found"})
+                    }
+                    
+                }
+             })
+        })
+
+        app.post('/addprp', upload.single('image'),(req, res) => {
             const rooms = req.body.rooms;
             const location = req.body.location;
             const review = req.body.review;
@@ -241,9 +261,10 @@ app.get('/edit/:id', (req,res) => {
             const view = req.body.view;
             const cityname = req.body.cityname;
             const types = req.body.types;
+            const image = req.file.filename;
 
-            db.query('INSERT INTO citydescription (roomsNumber, Location, Review, Price, `Desc`, MoreDesc, `View`, cityyName, type) VALUES(?,?,?,?,?,?,?,?,?)',
-             [rooms,location,review,price,desc,moredesc,view,cityname,types], (err, result) =>{
+            db.query('INSERT INTO citydescription (roomsNumber, Location, Review, Price, `Desc`, MoreDesc, `View`,`Images`, cityyName, type) VALUES(?,?,?,?,?,?,?,?,?,?)',
+             [rooms,location,review,price,desc,moredesc,view,image,cityname,types], (err, result) =>{
                 if(err) {
                     console.log(err);
                 } else {
@@ -252,25 +273,36 @@ app.get('/edit/:id', (req,res) => {
              });
         });
 
-        app.post('/addprpp',upload.single('image'), (req, res) => {
+        // app.post('/addimage',upload.single('image'), (req, res) => {
+        //     const image = req.file.filename;
+        //     const sql = "INSERT INTO citydescription (Images) VALUES (?) " ;
+        //     db.query(sql, [image], (err, result)=>{
+        //         if(err) return res.json({Message: "Error"});
+        //         return res.json({Status: "Success"});
+        //     })
+
+        //     db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
+        //      [cityname,types,mainName], (err, result) =>{
+        //         if(err) {
+        //             console.log(err)
+        //         } else {
+        //             res.send("VALUES INSERTED")
+        //         }
+        //      })
+        // })
+
+        app.post('/addprpp', (req, res) => {
             const cityname = req.body.cityname
             const types = req.body.types
             const mainName = req.body.mainName
-            const image = req.file.filename;
-            const sql = "INSERT INTO images (image) VALUES (?) " ;
-            db.query(sql, [image], (err, result)=>{
-                if(err) return res.json({Message: "Error"});
-                return res.json({Status: "Success"});
-            })
-
-            // db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
-            //  [cityname,types,mainName], (err, result) =>{
-            //     if(err) {
-            //         console.log(err)
-            //     } else {
-            //         res.send("VALUES INSERTED")
-            //     }
-            //  })
+            db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
+             [cityname,types,mainName], (err, result) =>{
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.send("VALUES INSERTED")
+                }
+             })
         })
 
         app.get(`/user`, (req,res)=>{

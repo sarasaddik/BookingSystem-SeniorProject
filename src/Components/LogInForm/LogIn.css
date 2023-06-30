@@ -4,6 +4,7 @@
   
   h1 {
     text-align: center;
+    color: black
   }
   
   form {
@@ -21,6 +22,7 @@
   label {
     margin-bottom: 5px;
     height: 22px;
+    color: black
   }
   
   input {
@@ -96,8 +98,41 @@
   .headerName{
 font-style: oblique;
   }
-  
+/* 
+  .allTheForm{
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: block;
+    text-align: center;
 
+    
+  }
+
+.input{
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: block;
+
+}
+ */
+
+
+ .allTheForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.container{
+    margin-bottom: 99px;
+    padding-bottom: 20px;
+  }
 
 
 

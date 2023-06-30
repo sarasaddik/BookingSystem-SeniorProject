@@ -45,7 +45,7 @@ export default function AddProperty() {
 
   const formdata = new FormData();
   formdata.append('image', file);
-  axios.post(`http://localhost:8800/addprpp`, formdata)
+  axios.post(`http://localhost:8800/addprp`, formdata)
     .then(res => {
       if (res.data.Status === "Success") {
         console.log("Succeeded");
@@ -55,27 +55,27 @@ export default function AddProperty() {
     })
     .catch(err => console.log(err));
 
-      // axios.post(`http://localhost:8800/addprp`, {
-      //   rooms:rooms,
-      //   location:location,
-      //   review:review,
-      //   price:price,
-      //   desc:desc,
-      //   moredesc:moredesc,
-      //   view:view,
-      //   cityname: cityname,
-      //   types:types,
-      // }).then(() =>{
-      //   console.log("SUCCESS")
-      // })
+      axios.post(`http://localhost:8800/addprp`, {
+        rooms:rooms,
+        location:location,
+        review:review,
+        price:price,
+        desc:desc,
+        moredesc:moredesc,
+        view:view,
+        cityname: cityname,
+        types:types,
+      }).then(() =>{
+        console.log("SUCCESS")
+      })
 
-      // axios.post(`http://localhost:8800/addprpp`, {
-      //   cityname: cityname,
-      //   types:types,
-      //   mainName:mainName,
-      // }).then(() =>{
-      //   console.log("SUCCESS twice")
-      // })
+      axios.post(`http://localhost:8800/addprpp`, {
+        cityname: cityname,
+        types:types,
+        mainName:mainName,
+      }).then(() =>{
+        console.log("SUCCESS twice")
+      })
     }
   
   
@@ -102,7 +102,7 @@ export default function AddProperty() {
 
           <Form noValidate onSubmit={handleSubmit}>
 
-            {/* <Row className="mb-3">
+            <Row className="mb-3">
 
             <Form.Group
               as={Col}
@@ -346,7 +346,7 @@ export default function AddProperty() {
               </Form.Control.Feedback>
             </Form.Group>
 
-          </Row> */}
+          </Row>
 
           <input type="file" onChange={(event) => {
             setFile(event.target.files[0])
