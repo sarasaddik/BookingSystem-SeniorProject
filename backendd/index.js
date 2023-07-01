@@ -11,6 +11,7 @@ import path from 'path'
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'))
 
 const db = mysql2.createConnection({
     host: "127.0.0.1",
@@ -127,7 +128,7 @@ app.get(`/types/hotel`, (req,res)=>{
 })
 
 app.get(`/types/apartment`, (req,res)=>{
-    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment'"  
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy<50"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -136,6 +137,34 @@ app.get(`/types/apartment`, (req,res)=>{
         }
     })
 })
+
+app.get(`/types/newApartment`, (req,res)=>{
+  
+ // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
+ const q = "select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
+ db.query(q, (err,data)=>{
+     if (err){
+         console.log(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+
+app.get(`/types/newImages/:idimages`, (req,res)=>{
+    
+    // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
+    const idimages = req.params.idimages; 
+    const q = "select * from images"
+     db.query(q, [idimages] , (err,data)=>{
+           if (err){
+               console.log(err)
+           }else{
+               res.send(data)
+           }
+       })
+   })
 
 app.get(`/types/resorts`, (req,res)=>{
     const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='resort'"  
@@ -251,27 +280,7 @@ app.get('/edit/:id', (req,res) => {
              })
         })
 
-        app.post('/addpprp', upload.single('image'),(req, res) => {
-            const rooms = req.body.rooms;
-            const location = req.body.location;
-            const review = req.body.review;
-            const price = req.body.price;
-            const desc = req.body.desc;
-            const moredesc = req.body.moredesc;
-            const view = req.body.view;
-            const cityname = req.body.cityname;
-            const types = req.body.types;
-            const image = req.file.filename;
 
-            db.query('INSERT INTO citydescription (`roomsNumber`, Location, Review, Price, `Desc`, MoreDesc, `View`, `Images` , cityyName, type) VALUES(?,?,?,?,?,?,?,?,?,?)',
-             [rooms,location,review,price,desc,moredesc,view,image,cityname,types], (err, result) =>{
-                if(err) {
-                    console.log(err);
-                } else {
-                    res.send("VALUES INSERTED");
-                };
-             });
-        });
 
         app.post('/addprp', (req, res) => {
             const rooms = req.body.rooms;
@@ -294,13 +303,14 @@ app.get('/edit/:id', (req,res) => {
              });
         });
 
-        // app.post('/addimage',upload.single('image'), (req, res) => {
-        //     const image = req.file.filename;
-        //     const sql = "INSERT INTO citydescription (Images) VALUES (?) " ;
-        //     db.query(sql, [image], (err, result)=>{
-        //         if(err) return res.json({Message: "Error"});
-        //         return res.json({Status: "Success"});
-        //     })
+        app.post('/addImage',upload.single('image'), (req, res) => {
+            const image = req.file.filename;
+            const sql = "INSERT INTO images (image) VALUES (?) " ;
+            db.query(sql, [image], (err, result)=>{
+                if(err) return res.json({Message: "Error"});
+                return res.json({Status: "Success"});
+            })
+        })
 
         //     db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
         //      [cityname,types,mainName], (err, result) =>{

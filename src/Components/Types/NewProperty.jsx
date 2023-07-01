@@ -3,30 +3,38 @@ import Axios from 'axios';
 import "./Types.css"
 import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
-import NavBarMin from "../Navbar/NavbarMinimise";
-import Footerup from "../../Components/Footer/FooterUp"; 
 
-import NewProperty from "./NewProperty"; 
-
-    const Hotel_Types = () => {
+    const newProperty = () => {
      
 
       const[cityList, setCityList] = useState([]);
       const [newBook, setNewBook] = useState('');
-
+      const[data,setData] = useState([]);
+     
       useEffect(() => {
-            Axios.get(`http://localhost:8800/types/apartment`).then((response) =>{
+            Axios.get(`http://localhost:8800/types/newApartment`).then((response) =>{
               setCityList(response.data)
               console.log(response)
             })
-           
-        },[0])
+            
+          },[0])
+          
+          useEffect(() => {
+            Axios.get(`http://localhost:8800/types/newImages/${data.idimages}`).then((response) =>{
+            setData(response.data[0])
+            console.log(response)
+          })
+         
+      },[0])
+
+
+
+
         return(
           <>
 
-          <NavBarMin/>
-
      {cityList.map((val,key)=>{
+
 
 
 const bookFunction = (id) => {
@@ -45,29 +53,6 @@ const bookFunction = (id) => {
 }
 }
 
-// const bookFunction = (id) => {
-//   const check = val.Reserved;
-
-    
-//   if(newBook.toLowerCase() =='book' && check !='book'){
-//     Axios.put("http://localhost:8800/update", {Reserved: newBook, id: id}).then((response)=>{
-//       alert('Your room is reserved successfully. For cancellation please contact us, Thank you')
-//     })
-//     window.location.reload();
-//   }
-
-//   else if(check == 'book'){
-//    alert('Your selection is booked by another guest, please choose another one, Thank you')   
-//    window.location.reload();
-
-//   }
-//   else{
-//     alert("Please write 'book' to reserve your selected room, Thank you");
-//     console.log(" HAHA");    
-//     window.location.reload();
-//   }
-  
-// }
 
       return (
         
@@ -77,7 +62,7 @@ const bookFunction = (id) => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={val.Images}
+          src={`http://localhost:8800/images/` + data.image}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -204,37 +189,10 @@ const bookFunction = (id) => {
        
       );
     })}
-    <NewProperty/> 
-
-
     
-
-
-<Footerup/>
     </>
         )
     };
  
- export default Hotel_Types;
+ export default newProperty;
     
-
-    {/* //   <Row xs={1} md={2} className="g-4 container" >
-    //   {Array.from({ length: 1 }).map((_, idx) => (
-    //     <Col>
-    //       <Main key={key}>
-    //         <Main.Img variant="top" src="holder.js/100px160" />
-    //         <Main.Body>
-    //           <Main.Title>{val.Name}</Main.Title>
-    //           <Main.Subtitle className="mb-2 text-muted">{val.cityName}, {val.Type}</Main.Subtitle>
-    //           <Main.Text>
-    //             {val.Desc}
-    //           </Main.Text>
-    //           <Main.Footer>
-    //       <small className="text-muted">Last updated 3 mins ago</small>
-    //     </Main.Footer>
-    //         </Main.Body>
-    //       </Main>
-    //     </Col>
-    //   ))}
-    // </Row> */}
-      

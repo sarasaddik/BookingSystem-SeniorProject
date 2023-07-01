@@ -40,42 +40,41 @@ export default function AddProperty() {
     const [view,setView] = useState("");
     const [file, setFile] = useState();
 
-
     const addLogin = () => {
 
   const formdata = new FormData();
   formdata.append('image', file);
-  // axios.post(`http://localhost:8800/addprp`, formdata)
-  //   .then(res => {
-  //     if (res.data.Status === "Success") { 
-  //       console.log("Succeeded");
-  //     } else {
-  //       console.log("Failed");
-  //     }
-  //   })
-  //   .catch(err => console.log(err));
+  axios.post(`http://localhost:8800/addImage`, formdata)
+    .then(res => {
+      if (res.data.Status === "Success") { 
+        console.log("Succeeded image");
+      } else {
+        console.log("Failed");
+      }
+    })
+    .catch(err => console.log(err));
 
-      axios.post(`http://localhost:8800/addprp`, {
-        rooms:rooms,
-        location:location,
-        review:review,
-        price:price,
-        desc:desc,
-        moredesc:moredesc,
-        view:view,
-        cityname: cityname,
-        types:types,
-      }).then(() =>{
-        console.log("SUCCESS")
-      })
+      // axios.post(`http://localhost:8800/addprp`, {
+      //   rooms:rooms,
+      //   location:location,
+      //   review:review,
+      //   price:price,
+      //   desc:desc,
+      //   moredesc:moredesc,
+      //   view:view,
+      //   cityname: cityname,
+      //   types:types,
+      // }).then(() =>{
+      //   console.log("SUCCESS")
+      // })
 
-      axios.post(`http://localhost:8800/addprpp`, {
-        cityname: cityname,
-        types:types,
-        mainName:mainName,
-      }).then(() =>{
-        console.log("SUCCESS twice")
-      })
+      // axios.post(`http://localhost:8800/addprpp`, {
+      //   cityname: cityname,
+      //   types:types,
+      //   mainName:mainName,
+      // }).then(() =>{
+      //   console.log("SUCCESS twice")
+      // })
     }
   
   
