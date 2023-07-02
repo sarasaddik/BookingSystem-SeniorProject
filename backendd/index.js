@@ -141,30 +141,37 @@ app.get(`/types/apartment`, (req,res)=>{
 app.get(`/types/newApartment`, (req,res)=>{
   
  // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
- const q = "select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
+ const idimages = req.body.idimages; 
+//  console.log(req);
+ const q = `select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50`
+
  db.query(q, (err,data)=>{
      if (err){
          console.log(err)
+         console.log("error")
         }else{
             res.send(data)
+             console.log(data)
+            //console.log(idimages);
+
         }
     })
 })
 
 
-app.get(`/types/newImages/:idimages`, (req,res)=>{
+// app.get(`/types/newImages/:idimages`, (req,res)=>{
     
-    // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
-    const idimages = req.params.idimages; 
-    const q = "select * from images"
-     db.query(q, [idimages] , (err,data)=>{
-           if (err){
-               console.log(err)
-           }else{
-               res.send(data)
-           }
-       })
-   })
+//     // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
+//     const idimages = req.params.idimages; 
+//     const q = `select * from images where idimages = ${idimages}`;
+//      db.query(q, [idimages] , (err,data)=>{
+//            if (err){
+//                console.log(err)
+//            }else{
+//                res.send(data)
+//            }
+//        })
+//    })
 
 app.get(`/types/resorts`, (req,res)=>{
     const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='resort'"  

@@ -9,24 +9,28 @@ import Carousel from 'react-bootstrap/Carousel';
 
       const[cityList, setCityList] = useState([]);
       const [newBook, setNewBook] = useState('');
-      const[data,setData] = useState([]);
+      const[image,setImage] = useState('');
      
       useEffect(() => {
-            Axios.get(`http://localhost:8800/types/newApartment`).then((response) =>{
-              setCityList(response.data)
-              console.log(response)
+           
+        // Axios.get(`http://localhost:8800/types/newImages/${data.idimages}`).then((response) =>{
+        //       for(let i=0; i<=response.data.length;i++){
+          //     console.log(response.data)
+          //     console.log("hii")
+          //   }
+          //   })  
+          
+          Axios.get(`http://localhost:8800/types/newApartment`).then((response) =>{
+            setCityList(response.data)
+            //console.log(response.data[0].image)
+            // setImage(response.data)
+            //console.log(`response.data[i].image = ${response.data[i].image}`)
+          //}
             })
-            
+          
           },[0])
           
-          useEffect(() => {
-            Axios.get(`http://localhost:8800/types/newImages/${data.idimages}`).then((response) =>{
-            setData(response.data[0])
-            console.log(response)
-          })
-         
-      },[0])
-
+          
 
 
 
@@ -55,98 +59,21 @@ const bookFunction = (id) => {
 
 
       return (
-        
+        <>
         <div className="searchItem" key={key}>
-           <div className="siImg">
-           <Carousel>
+        <div className="siImg">
+        <Carousel>
       <Carousel.Item>
+        {console.log(val.image)}
         <img
           className="d-block w-100"
-          src={`http://localhost:8800/images/` + data.image}
+          src={`http://localhost:8800/images/${val.image}`}
           alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3></h3>
-          <p></p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={val.Images2}
-          alt="Second slide"
-        />
+          />
+          </Carousel.Item>
+          </Carousel>
+          </div>
 
-        <Carousel.Caption>
-          <h3></h3>
-          <p></p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={val.Images3}
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3></h3>
-          <p>
-           
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={val.Images4}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3></h3>
-          <p></p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={val.Images5}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3></h3>
-          <p></p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={val.Images6}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3></h3>
-          <p></p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={val.Images7}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3></h3>
-          <p></p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-    </div>
-          {/* <img
-            src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
-            alt=""
-            className="siImg"
-          /> */}
           <div className="siDesc">
             <h1 className="siTitle">{val.cityyName} , {val.type} </h1>
             <h5 className="siName"><b>{val.Name}</b></h5>
@@ -185,14 +112,14 @@ const bookFunction = (id) => {
               <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
             </div> 
           </div>
-        </div>
-       
-      );
-    })}
-    
-    </>
-        )
-    };
+          </div>
+        
+       </> )
+     }
+       )
+      } 
+      </>
+        )}
  
  export default newProperty;
     

@@ -17,7 +17,7 @@ import NewProperty from "./NewProperty";
       useEffect(() => {
             Axios.get(`http://localhost:8800/types/apartment`).then((response) =>{
               setCityList(response.data)
-              console.log(response)
+              // console.log(response)
             })
            
         },[0])
