@@ -13,6 +13,7 @@ const Example = () => {
   const [lName, setlName] = useState("");
   const [nbr, setnbr] = useState("");
   const [email, setemail] = useState("");
+  const [IDnumber, setIDnumber] = useState("");
   const [user, setuser] = useState([]);
 
   const handleClose = () => setShow(false);
@@ -37,7 +38,7 @@ const Example = () => {
   const myButton = document.getElementById("addProp");
   
   const addUser = () => {
-    if(fName.trim().length == 0 || lName.trim().length ==0 || nbr.trim().length ==0 || email.trim().length ==0){
+    if(fName.trim().length == 0 || lName.trim().length ==0 || nbr.trim().length ==0 || email.trim().length ==0 || IDnumber.trim().length == 0){
       alert("Please fill all the fields");
       myButton.disabled = true;
     }
@@ -46,7 +47,8 @@ const Example = () => {
       fName: fName,
       lName: lName,
       nbr: nbr,
-      email: email
+      email: email,
+      IDnumber:IDnumber
     }).then(() => {
       console.log("SUCCESS");
       myButton.disabled = false; // Enable the button after successful form submission
@@ -119,6 +121,13 @@ const navigate = useNavigate();
                 onChange={(event) => {
                   setemail(event.target.value);
                 }} />
+
+              <Form.Label>Passport or ID number</Form.Label>
+              <Form.Control type="IDnumber" placeholder="ID number"
+                onChange={(event) => {
+                  setIDnumber(event.target.value);
+                }} />
+
             </Form.Group>
             <Button variant="primary" type='Submit' value="Submit" 
             // onClick={enable}

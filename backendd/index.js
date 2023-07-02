@@ -34,6 +34,8 @@ const upload = multer({
 })
 
 
+
+
 app.get("/", (req,res)=>{
     res.json("helloo")
 })
@@ -243,9 +245,10 @@ app.get('/edit/:id', (req,res) => {
             const lName = req.body.lName
             const nbr = req.body.nbr
             const email = req.body.email
+            const IDnumber = req.body.IDnumber
 
-            db.query('INSERT INTO users (Username, UserLastNAme, phoneNumber, email) VALUES(?,?,?,?)',
-             [fName, lName, nbr, email], (err, result) =>{
+            db.query('INSERT INTO users (Username, UserLastNAme, phoneNumber, email, IDnumber) VALUES(?,?,?,?,?)',
+             [fName, lName, nbr, email, IDnumber], (err, result) =>{
                 if(err) {
                     console.log(err)
                 } else {
@@ -318,6 +321,18 @@ app.get('/edit/:id', (req,res) => {
                 return res.json({Status: "Success"});
             })
         })
+
+        // app.post('/addImage', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'file2', maxCount: 1 }]), (req, res) => {
+        //     const image = req.file.filename;
+        //     const image2 = req.file2.filename;
+        //     const sql = "INSERT INTO images (image,image2) VALUES (?,?) " ;
+        //         db.query(sql, [image,image2], (err, result)=>{
+        //         if(err) return res.json({Message: "Error"});
+        //         return res.json({Status: "Success"});
+        //     })
+        // })
+
+        
 
         //     db.query('INSERT INTO cityy (cityyNames,types,Name) VALUES(?,?,?)',
         //      [cityname,types,mainName], (err, result) =>{

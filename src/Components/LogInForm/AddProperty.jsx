@@ -10,6 +10,18 @@ import { useState } from 'react';
 import axios from 'axios';
 
 export default function AddProperty() {
+
+
+  const myStyle={
+    backgroundImage: 
+"url('https://cdn.wallpapersafari.com/66/32/g6WHKt.jpg')",
+     height:'100vh',
+    // marginTop:'-70px',
+    // fontSize:'50px',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+}
+
     const { Formik } = formik;
 
     const schema = yup.object().shape({
@@ -100,7 +112,8 @@ export default function AddProperty() {
         {({ handleSubmit, handleChange, values, touched, errors }) => (
 
 
-          <Form noValidate onSubmit={handleSubmit}>
+          <Form noValidate onSubmit={handleSubmit} style={myStyle}
+          >
             <h1>Owner</h1>
 
             <Row className="mb-3">
