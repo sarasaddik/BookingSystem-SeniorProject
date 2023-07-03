@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import * as formik from 'formik';
 import * as yup from 'yup';
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
 
 export default function AddProperty() {
@@ -51,6 +51,7 @@ export default function AddProperty() {
     const [moredesc,setmoredesc] = useState("");
     const [view,setView] = useState("");
     const [file, setFile] = useState();
+    const[owner, setOwner] = useState([]);
 
     const addLogin = () => {
 
@@ -88,9 +89,32 @@ export default function AddProperty() {
       //   console.log("SUCCESS twice")
       // })
     }
-  
-  
+
+    useEffect(() => {
+        
+        axios.get(`http://localhost:8800/owner`).then((response) =>{
+          setOwner(response.data)
+          
+          })
+        
+        },[0])
+    
     return (
+  
+          <>
+  
+          {owner.map((val,key)=>{
+
+            return(
+              <>
+    <h1>Owner: {val.Username} </h1>
+    
+    </>
+            )
+          }
+          )
+        }
+    
         <Formik
         validationSchema={schema}
         onSubmit={console.log}
@@ -114,7 +138,6 @@ export default function AddProperty() {
 
           <Form noValidate onSubmit={handleSubmit} style={myStyle}
           >
-            <h1>Owner</h1>
 
             <Row className="mb-3">
 
@@ -373,4 +396,9 @@ export default function AddProperty() {
         )}
       </Formik>
     );
-  }
+    </>
+        
+    )
+
+        }
+  

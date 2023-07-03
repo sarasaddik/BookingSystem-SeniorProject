@@ -14,6 +14,7 @@ const Example = () => {
   const [nbr, setnbr] = useState("");
   const [email, setemail] = useState("");
   const [IDnumber, setIDnumber] = useState("");
+  const [passcode, setPasscode] = useState("");
   const [user, setuser] = useState([]);
 
   const handleClose = () => setShow(false);
@@ -38,23 +39,31 @@ const Example = () => {
   const myButton = document.getElementById("addProp");
   
   const addUser = () => {
-    if(fName.trim().length == 0 || lName.trim().length ==0 || nbr.trim().length ==0 || email.trim().length ==0 || IDnumber.trim().length == 0){
+    if(fName.trim().length == 0 || lName.trim().length ==0 || nbr.trim().length ==0 ||
+     email.trim().length ==0 || IDnumber.trim().length == 0 || passcode.trim().length==0){
       alert("Please fill all the fields");
       myButton.disabled = true;
     }
+
+    else if(passcode !== 'saraBooking'){
+   alert("Please enter the correct passcode")
+   myButton.disabled = true;
+    }
+
     else{
     axios.post(`http://localhost:8800/register`, {
       fName: fName,
       lName: lName,
       nbr: nbr,
       email: email,
-      IDnumber:IDnumber
+      IDnumber:IDnumber,
+      passcode:passcode
     }).then(() => {
       console.log("SUCCESS");
       myButton.disabled = false; // Enable the button after successful form submission
     }).catch((error) => {
       console.error(error);
-      myButton.disabled = false; // Enable the button after error
+      myButton.disabled = true; // Enable the button after error
     });
   }
 
@@ -89,7 +98,7 @@ const navigate = useNavigate();
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Register
+        Register to add Property
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -111,7 +120,7 @@ const navigate = useNavigate();
                 }} />
 
               <Form.Label type="number" id='Phone number'>Phone number</Form.Label>
-              <Form.Control type="phone number" placeholder="Enter your phone number "
+              <Form.Control type="number" placeholder="Enter your phone number "
                 onChange={(event) => {
                   setnbr(event.target.value);
                 }} />
@@ -127,6 +136,13 @@ const navigate = useNavigate();
                 onChange={(event) => {
                   setIDnumber(event.target.value);
                 }} />
+
+              <Form.Label type="passcode" id='passcode'>Passcode</Form.Label>
+              <Form.Control type="passcode" placeholder="enter the passcode"
+              onChange={(event) => {
+                setPasscode(event.target.value);
+              }}
+                 />
 
             </Form.Group>
             <Button variant="primary" type='Submit' value="Submit" 

@@ -246,9 +246,10 @@ app.get('/edit/:id', (req,res) => {
             const nbr = req.body.nbr
             const email = req.body.email
             const IDnumber = req.body.IDnumber
+            const passcode = req.body.passcode
 
-            db.query('INSERT INTO users (Username, UserLastNAme, phoneNumber, email, IDnumber) VALUES(?,?,?,?,?)',
-             [fName, lName, nbr, email, IDnumber], (err, result) =>{
+            db.query('INSERT INTO users (Username, UserLastNAme, phoneNumber, email, IDnumber, passcode) VALUES(?,?,?,?,?,?)',
+             [fName, lName, nbr, email, IDnumber,passcode], (err, result) =>{
                 if(err) {
                     console.log(err)
                 } else {
@@ -360,6 +361,17 @@ app.get('/edit/:id', (req,res) => {
 
         app.get(`/user`, (req,res)=>{
             const q = "select * from users"  
+            db.query(q, (err,data)=>{
+                if (err){
+                    console.log(err)
+                }else{
+                    res.send(data)
+                }
+            })
+        })
+
+        app.get(`/owner`, (req,res)=>{
+            const q = "select Username from users ORDER BY id DESC LIMIT 1"  
             db.query(q, (err,data)=>{
                 if (err){
                     console.log(err)
