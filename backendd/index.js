@@ -176,7 +176,7 @@ app.get(`/types/newApartment`, (req,res)=>{
 //    })
 
 app.get(`/types/resorts`, (req,res)=>{
-    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='resort'"  
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='resort' AND citydescription.idCityy<50"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -185,6 +185,7 @@ app.get(`/types/resorts`, (req,res)=>{
         }
     })
 })
+
 
 app.get(`/types/newResorts`, (req,res)=>{
   
@@ -207,7 +208,7 @@ app.get(`/types/newResorts`, (req,res)=>{
    })
 
 app.get(`/types/villas`, (req,res)=>{
-    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='villa'"  
+    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='villa'AND citydescription.idCityy<50"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -216,6 +217,26 @@ app.get(`/types/villas`, (req,res)=>{
         }
     })
 })
+
+app.get(`/types/newVillas`, (req,res)=>{
+  
+    // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
+    const idimages = req.body.idimages; 
+   //  console.log(req);
+    const q = "select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='villa' AND citydescription.idCityy>=50"
+   
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+            console.log("error")
+           }else{
+               res.send(data)
+                console.log(data)
+               //console.log(idimages);
+   
+           }
+       })
+   })
 
 app.get(`/description`, (req,res)=>{
     const q = "SELECT * FROM allplaces"

@@ -8,6 +8,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
 import Footerup from "../../Components/Footer/FooterUp"; 
+import NewVillas from './NewVillas';
 
 function Villas_Types() {
 
@@ -30,7 +31,7 @@ return(
 
 {cityList.map((val,key)=>{
 
-const bookFunction = (id) => {
+const bookFunction = (idCityy) => {
   const check = val.Reserved;
 
   if(check=='book'){
@@ -39,7 +40,7 @@ const bookFunction = (id) => {
 
   else{
 
-  Axios.put("http://localhost:8800/update", {id: id}).then((response)=>{
+  Axios.put("http://localhost:8800/update", {idCityy: idCityy}).then((response)=>{
     alert('Your room is reserved successfully. For cancellation please contact us, Thank you')
   })
   window.location.reload();
@@ -174,13 +175,14 @@ return (
       <span className="siPrice">{val.Price}$/night</span>
       <span className="siTaxOp">Includes taxes and fees</span>
 
-      <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
+      <button onClick={()=>{bookFunction(val.idCityy)}}>Book Now</button>
     </div> 
   </div>
 </div>
 
 );
 })}
+<NewVillas/> 
 <Footerup/>
 </>
 )

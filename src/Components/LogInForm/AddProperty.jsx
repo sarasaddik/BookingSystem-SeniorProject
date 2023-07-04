@@ -55,6 +55,12 @@ export default function AddProperty() {
 
     const addLogin = () => {
 
+      if(types !== 'resort' && types !== 'villa' && types!== 'apartment'){
+        alert("You can add only an apartment, resort, villa")
+
+      }
+      else {
+
   const formdata = new FormData();
   formdata.append('image', file);
   axios.post(`http://localhost:8800/addImage`, formdata)
@@ -89,7 +95,7 @@ export default function AddProperty() {
         console.log("SUCCESS twice")
       })
     }
-
+  }
     useEffect(() => {
         
         axios.get(`http://localhost:8800/owner`).then((response) =>{

@@ -8,7 +8,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import NavBarMin from "../Navbar/NavbarMinimise";
 import Footerup from "../../Components/Footer/FooterUp"; 
-
+import NewResorts from './NewResorts';
 
 function Resort_Types() {
 
@@ -174,13 +174,15 @@ return (
       <span className="siPrice">{val.Price}$/night</span>
       <span className="siTaxOp">Includes taxes and fees</span>
 
-      <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
+      <button onClick={()=>{bookFunction(val.idCityy)}}>Book Now</button>
     </div> 
   </div>
 </div>
 
 );
 })}
+
+<NewResorts/>  
 <Footerup/>
 </>
 )
