@@ -145,7 +145,7 @@ app.get(`/types/newApartment`, (req,res)=>{
  // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
  const idimages = req.body.idimages; 
 //  console.log(req);
- const q = `select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50`
+ const q = "select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
 
  db.query(q, (err,data)=>{
      if (err){
@@ -185,6 +185,26 @@ app.get(`/types/resorts`, (req,res)=>{
         }
     })
 })
+
+app.get(`/types/newResorts`, (req,res)=>{
+  
+    // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
+    const idimages = req.body.idimages; 
+   //  console.log(req);
+    const q = "select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='resort' AND citydescription.idCityy>=50"
+   
+    db.query(q, (err,data)=>{
+        if (err){
+            console.log(err)
+            console.log("error")
+           }else{
+               res.send(data)
+                console.log(data)
+               //console.log(idimages);
+   
+           }
+       })
+   })
 
 app.get(`/types/villas`, (req,res)=>{
     const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='villa'"  
@@ -230,9 +250,9 @@ app.get('/edit/:id', (req,res) => {
 //     })})
 
     app.put("/update", (req, res) => {  
-        const id = req.body.id; 
+        const idCityy = req.body.idCityy; 
         const sql = "Update citydescription set Reserved = 'book' WHERE idCityy = ?";    
-        db.query(sql, [ id], (err, result) => {        
+        db.query(sql, [ idCityy], (err, result) => {        
             if(err) {
                 console.log(err);
             } else {

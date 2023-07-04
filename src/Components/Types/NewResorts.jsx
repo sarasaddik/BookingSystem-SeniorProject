@@ -4,7 +4,7 @@ import "./Types.css"
 import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 
-    const newProperty = () => {
+    const newResorts = () => {
      
 
       const[cityList, setCityList] = useState([]);
@@ -20,7 +20,7 @@ import Carousel from 'react-bootstrap/Carousel';
           //   }
           //   })  
           
-          Axios.get(`http://localhost:8800/types/newApartment`).then((response) =>{
+          Axios.get(`http://localhost:8800/types/newResorts`).then((response) =>{
             setCityList(response.data)
             //console.log(response.data[0].image)
             // setImage(response.data)
@@ -121,5 +121,5 @@ const bookFunction = (idCityy) => {
       </>
         )}
  
- export default newProperty;
+ export default newResorts;
     

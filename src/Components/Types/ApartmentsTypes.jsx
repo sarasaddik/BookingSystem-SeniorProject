@@ -29,7 +29,7 @@ import NewProperty from "./NewProperty";
      {cityList.map((val,key)=>{
 
 
-const bookFunction = (id) => {
+const bookFunction = (idCityy) => {
   const check = val.Reserved;
 
   if(check=='book'){
@@ -38,7 +38,7 @@ const bookFunction = (id) => {
 
   else{
 
-  Axios.put("http://localhost:8800/update", {id: id}).then((response)=>{
+  Axios.put("http://localhost:8800/update", {idCityy: idCityy}).then((response)=>{
     alert('Your room is reserved successfully. For cancellation please contact us, Thank you')
   })
   window.location.reload();
@@ -197,7 +197,7 @@ const bookFunction = (id) => {
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>
         
-              <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
+              <button onClick={()=>{bookFunction(val.idCityy)}}>Book Now</button>
             </div> 
           </div>
         </div>

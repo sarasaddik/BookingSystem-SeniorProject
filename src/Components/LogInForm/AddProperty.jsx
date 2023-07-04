@@ -67,27 +67,27 @@ export default function AddProperty() {
     })
     .catch(err => console.log(err));
 
-      // axios.post(`http://localhost:8800/addprp`, {
-      //   rooms:rooms,
-      //   location:location,
-      //   review:review,
-      //   price:price,
-      //   desc:desc,
-      //   moredesc:moredesc,
-      //   view:view,
-      //   cityname: cityname,
-      //   types:types,
-      // }).then(() =>{
-      //   console.log("SUCCESS")
-      // })
+      axios.post(`http://localhost:8800/addprp`, {
+        rooms:rooms,
+        location:location,
+        review:review,
+        price:price,
+        desc:desc,
+        moredesc:moredesc,
+        view:view,
+        cityname: cityname,
+        types:types,
+      }).then(() =>{
+        console.log("SUCCESS")
+      })
 
-      // axios.post(`http://localhost:8800/addprpp`, {
-      //   cityname: cityname,
-      //   types:types,
-      //   mainName:mainName,
-      // }).then(() =>{
-      //   console.log("SUCCESS twice")
-      // })
+      axios.post(`http://localhost:8800/addprpp`, {
+        cityname: cityname,
+        types:types,
+        mainName:mainName,
+      }).then(() =>{
+        console.log("SUCCESS twice")
+      })
     }
 
     useEffect(() => {

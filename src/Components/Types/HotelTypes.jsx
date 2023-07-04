@@ -176,7 +176,7 @@ const bookFunction = (id) => {
               <span className="siPrice"> {val.Price}$/night</span>
               <span className="siTaxOp">Includes taxes and fees</span>              
       
-              <button onClick={()=>{bookFunction(val.idCity)}}>Book Now</button>
+              <button onClick={()=>{bookFunction(val.idCityy)}}>Book Now</button>
              
                
             </div> 
