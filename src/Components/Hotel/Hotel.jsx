@@ -59,18 +59,6 @@ const bookFunction = (id) => {
 //     window.location.reload();
 //   }
 
-//   else if(check == 'book'){
-//    alert('Your selection is booked by another guest, please choose another one, Thank you')   
-//    window.location.reload();
-
-//   }
-//   else{
-//     alert("Please write 'book' to reserve your selected room, Thank you");
-//     console.log(" HAHA");    
-//     window.location.reload();
-//   }
-  
-// }
 
 
 return (

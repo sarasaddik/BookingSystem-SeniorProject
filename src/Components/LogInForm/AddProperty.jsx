@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import React from 'react';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import NavBarMin from '../Navbar/NavbarMinimise';
 
 export default function AddProperty() {
 
@@ -117,7 +118,8 @@ export default function AddProperty() {
 
             return(
               <>
-    <h1>Owner: {val.Username} </h1>
+              <NavBarMin/>  
+    <h1>Welcome to Owner: {val.Username} </h1>
     
     </>
             )
@@ -431,7 +433,7 @@ export default function AddProperty() {
               <Form.Control
                 type="number"
                 placeholder="phone number"
-                name="username"
+                name="phone"
                 value={values.phone}
                 onChangeCapture={handleChange}
                 isInvalid={!!errors.phone}

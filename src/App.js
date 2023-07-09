@@ -27,6 +27,7 @@ import Contactus from "./Components/Footer/ContactUs";
 import AddProperty from "./Components/LogInForm/AddProperty";
 import Example from "./Components/LogInForm/Modal";
 import CreateAccount from "./Components/LogInForm/CreateAccount";
+import MyProperty from "./Components/MoreDescription/MyProperty";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/new" element={<AddProperty/>}/>
         <Route path="/Login" element={<Example/>}/>
         <Route path="/SignUp" element={<CreateAccount/>}/>  
+        <Route path="/MyProperty" element={<MyProperty/>}/>  
 
         
       </Routes>
