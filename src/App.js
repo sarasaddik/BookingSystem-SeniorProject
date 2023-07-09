@@ -25,6 +25,8 @@ import {
 import AboutUsMax from "./Components/Home/AboutUsMax";
 import Contactus from "./Components/Footer/ContactUs";
 import AddProperty from "./Components/LogInForm/AddProperty";
+import Example from "./Components/LogInForm/Modal";
+import CreateAccount from "./Components/LogInForm/CreateAccount";
 
 function App() {
   return (
@@ -44,6 +46,10 @@ function App() {
         <Route path="/hotels/:id" element={<LogInForm/>}/>
         <Route path="/about" element={<AboutUsMax/>}/>
         <Route path="/new" element={<AddProperty/>}/>
+        <Route path="/Login" element={<Example/>}/>
+        <Route path="/SignUp" element={<CreateAccount/>}/>  
+
+        
       </Routes>
     </BrowserRouter>
     </div>

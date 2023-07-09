@@ -23,7 +23,7 @@ function NavBar() {
         <Nav.Link href="#LogIn" > <Example/></Nav.Link>
         </div> */}
       </Nav>
-        <Nav.Link className="login" href="#Register" > <Example/></Nav.Link>
+        {/* <Nav.Link className="login" href="#Register" > <Example/></Nav.Link> */}
     </Container>
     
   </Navbar>

@@ -208,7 +208,7 @@ app.get(`/types/newResorts`, (req,res)=>{
    })
 
 app.get(`/types/villas`, (req,res)=>{
-    const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='villa'AND citydescription.idCityy<50"  
+    const q = "select citydescription.*, cityy.* from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where cityy.types='villa'AND citydescription.idCityy<50"  
     db.query(q, (err,data)=>{
         if (err){
             console.log(err)
@@ -223,7 +223,7 @@ app.get(`/types/newVillas`, (req,res)=>{
     // const q = "select citydescription.*, cityy.Name from citydescription inner join cityy on cityy.idCityy = citydescription.idCityy where citydescription.type='apartment' AND citydescription.idCityy>=50"
     const idimages = req.body.idimages; 
    //  console.log(req);
-    const q = "select citydescription.*, cityy.Name, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where citydescription.type='villa' AND citydescription.idCityy>=50"
+    const q = "select citydescription.*, cityy.*, images.* from citydescription join cityy on cityy.idCityy = citydescription.idCityy join images on images.idimages = citydescription.idCityy where cityy.types='villa' AND citydescription.idCityy>=50"
    
     db.query(q, (err,data)=>{
         if (err){
@@ -342,11 +342,11 @@ app.get('/edit/:id', (req,res) => {
             const desc = req.body.desc;
             const moredesc = req.body.moredesc;
             const view = req.body.view;
-            const cityname = req.body.cityname;
-            const types = req.body.types;
+            const username = req.body.username;
+            const phone = req.body.phone;
 
-            db.query('INSERT INTO citydescription (roomsNumber, Location, Review, Price, `Desc`, MoreDesc, `View` , cityyName, type) VALUES(?,?,?,?,?,?,?,?,?)',
-             [rooms,location,review,price,desc,moredesc,view,cityname,types], (err, result) =>{
+            db.query('INSERT INTO citydescription (roomsNumber, Location, Review, Price, `Desc`, MoreDesc, `View` , OwnerName, OwnerNumber) VALUES(?,?,?,?,?,?,?,?,?)',
+             [rooms,location,review,price,desc,moredesc,view,username,phone], (err, result) =>{
                 if(err) {
                     console.log(err);
                 } else {
@@ -421,6 +421,57 @@ app.get('/edit/:id', (req,res) => {
                 }
             })
         })
+
+        // app.post('/signup'), (req,res)=>{
+        //     const sql = "INSERT INTO users (Username,email, passcode) VALUES(?,?,?)' "
+        //     const name =req.body.name
+        //     const email = req.body.email
+        //     const password = req.body.password
+    
+        //     db.query(sql, [name,email,password], (err,data)=>{
+        //         if(err) {
+        //             return res.json("error")
+        //         }
+
+        //         return res.json(data)
+        //     })
+       
+        // }
+
+
+        app.post('/signup', (req, res) => {
+            const name = req.body.name
+            const email = req.body.email
+            const password = req.body.password
+
+            db.query('INSERT INTO users (Username, email, passcode) VALUES(?,?,?)',
+             [name, email, password], (err, result) =>{
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.send("VALUES INSERTED")
+                }
+             })
+        })
+
+        app.post('/SignIn', (req, res) => {
+            const email = req.body.email
+            const password = req.body.password
+
+            db.query('SELECT * FROM users where email=? AND passcode=?',
+             [email, password], (err, data) =>{
+                if(err) {
+                    return res.json("Error")
+                } else {
+                    if(data.length>0) {
+                        return res.json("Success");
+                    } else {
+                        return res.json("Failed")
+                    }
+                }
+             })
+        })
+
 
 app.listen(8800, () => {
     console.log("connecteddd!")

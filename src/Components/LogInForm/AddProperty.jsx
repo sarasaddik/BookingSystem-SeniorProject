@@ -35,6 +35,8 @@ export default function AddProperty() {
       Desc: yup.string().required(),
       moreDesc: yup.string().required(),
       View:yup.string().required(),
+      username:yup.string().required(),
+      phone:yup.string().required(),
         file: yup.mixed().required(),
         terms: yup.bool().required().oneOf([true], 'terms must be accepted'),
       });
@@ -50,6 +52,8 @@ export default function AddProperty() {
     const [desc,setdesc] = useState("");
     const [moredesc,setmoredesc] = useState("");
     const [view,setView] = useState("");
+    const [username, setusername] = useState("");
+    const [phone, setphone] = useState("");
     const [file, setFile] = useState();
     const[owner, setOwner] = useState([]);
 
@@ -81,8 +85,8 @@ export default function AddProperty() {
         desc:desc,
         moredesc:moredesc,
         view:view,
-        cityname: cityname,
-        types:types,
+        username: username,
+        phone:phone,
       }).then(() =>{
         console.log("SUCCESS")
       })
@@ -135,6 +139,8 @@ export default function AddProperty() {
           Desc:'',
           moreDesc:'',
           View:'',
+          username:'',
+          phone:'',
           file: null,
           terms: false,
         }}
@@ -389,6 +395,57 @@ export default function AddProperty() {
               </Form.Control.Feedback>
             </Form.Group>
 
+            <div>
+          <h1>Contacts Details</h1>
+            <Form.Group
+              as={Col}
+              md="6"
+              controlId="validationFormik103"
+              className="position-relative"
+            >
+              <Form.Label>Your Name </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="username"
+                name="username"
+                value={values.username}
+                onChangeCapture={handleChange}
+                isInvalid={!!errors.username}
+                onChange={(event)=>{
+                  setusername(event.target.value);
+                }}
+              />
+
+              <Form.Control.Feedback type="invalid" tooltip>
+                {errors.username}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group
+              as={Col}
+              md="6"
+              controlId="validationFormik103"
+              className="position-relative"
+            >
+              <Form.Label>Your Phone number </Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="phone number"
+                name="username"
+                value={values.phone}
+                onChangeCapture={handleChange}
+                isInvalid={!!errors.phone}
+                onChange={(event)=>{
+                  setphone(event.target.value);
+                }}
+              />
+
+              <Form.Control.Feedback type="invalid" tooltip>
+                {errors.phone}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+        </div>
           </Row>
 
           <input type="file" onChange={(event) => {
