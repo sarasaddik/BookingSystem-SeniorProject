@@ -473,17 +473,56 @@ app.get('/edit/:id', (req,res) => {
         })
 
 
-        app.get(`/search`, (req,res)=>{
-            const query = req.body.query
-            const q = `SELECT * FROM citydescription WHERE OwnerName = ?`  
-            db.query(q, [query], (err,data)=>{
-                if (err){
-                    console.log(err)
-                }else{
-                    res.send(data)
-                }
+        // app.get(`/search`, (req,res)=>{
+        //     const query = req.body.query
+        //     const q = `SELECT * FROM citydescription WHERE OwnerName = ?`  
+        //     db.query(q, [query], (err,data)=>{
+        //         if (err){
+        //             console.log(err)
+        //         }else{
+        //             res.send(data)
+        //         }
+        //     })
+        // })
+
+        // app.get('/search', (req, res) => {
+        //     const searchTerm = req.query.term;
+        
+        //     // Prepare the SQL query
+        //     const query = `SELECT * FROM citydescription WHERE OwnerName LIKE '%${searchTerm}%'`;
+        
+        //     // Execute the query
+        //     connection.query(query, (err, results) => {
+        //         if (err) {
+        //             console.log(err)
+        //             console.error('Error executing MySQL query: ' + err.stack);
+        //             return res.status(500).json({ error: 'Failed to retrieve data' });
+        //         }
+        //         res.json(results);
+        //     });
+        // });
+
+        app.get('/search', (req,res) => {
+            const searchTerm = req.query.term;
+            const query = `SELECT * FROM citydescription WHERE OwnerName LIKE '%${searchTerm}%'`;
+            db.query(query, (err, result)=>{
+                if(err) return res.json({Error:err});
+                return res.json(result);
             })
         })
+
+        app.delete('/data/:idCityy', (req, res) => {
+            const idCityy = req.params.idCityy;  
+            db.query('DELETE FROM citydescription WHERE idCityy = ?', [idCityy], (error, result) => {
+              if (error) {
+                console.log('Error deleting data:', error);
+                res.sendStatus(500); // Sending an error response
+              } else {
+                res.sendStatus(200); // Sending a success response
+              }
+            });
+          
+          });
 
 
 app.listen(8800, () => {

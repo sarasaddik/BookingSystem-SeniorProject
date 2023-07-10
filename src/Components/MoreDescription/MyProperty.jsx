@@ -7,48 +7,68 @@ import axios from 'axios';
 
 const MyProperty = () => {
 
-    const search =()=> {
-        const query = document.getElementById('searchInput').value.trim();
-   
-        // Make an API call to the backend
-        axios.get(`/search?query=${query}`)
-          .then(response => {
-            // Handle the response and display the results
-            displayResults(response.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }
-   
-      const displayResults = (results) => {
-        const searchResults = document.getElementById('searchResults');
-        searchResults.innerHTML = '';
-   
-        // Loop through the results and add them to the DOM
-        results.forEach(result => {
-          const item = document.createElement('div');
-          item.textContent = result;
-          searchResults.appendChild(item);
-        });
-      }
+  const search = ()=>{
+    const searchTerm = document.getElementById('search-bar').value;
+            axios.get(`http://localhost:8800/search?term=${searchTerm}`)
+                .then(response => {
+                  displayResults(response.data);
+                    console.log(response.data);
+                    // Use the response data as needed
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+  }
+
+  function displayResults(data) {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = '';
+  
+    for (let i = 0; i < data.length; i++) {
+      const card = document.createElement('div');
+      card.classList.add('card');
+  
+      const name = document.createElement('p');
+      name.innerText = data[i].Location;
+  
+      const deleteButton = document.createElement('button');
+      deleteButton.innerText = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        const id = data[i].idCityy; // Get the ID of the data
+        deleteData(id); // Call the deleteData function passing the ID
+      });
+  
+      card.appendChild(name);
+      card.appendChild(deleteButton);
+  
+      resultsContainer.appendChild(card);
+    }
+}
 
 
-    
+const deleteData = (idCityy) => {
+  axios
+    .delete(`http://localhost:8800/data/${idCityy}`)
+    .then(response => {
+      console.log(response.data);
+      console.log("deleted")
+      // Delete operation successful
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
     return(
-        <div>
-            <div>
+      <div>
 
-               <input type='text'
-               placeholder='enter'
-               id="searchInput"
-            />
-            </div>
-            <div>
-                <button onClick={search}>Search</button>
-            </div>
-            <div id="searchResults"></div>
-        </div>
+      <input id='search-bar' type='text' placeholder='Search'/>
+
+      <button onClick={search}>Search</button>
+      <div id='results'> </div> 
+
+
+      </div>
     )
 }
 
