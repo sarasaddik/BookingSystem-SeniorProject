@@ -6,6 +6,11 @@
     text-align: center;
     color: black
   }
+
+  p {
+    text-align: center;
+    color: black
+  }
   
   form {
     max-width: 500px;

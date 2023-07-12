@@ -281,23 +281,34 @@ app.get('/edit/:id', (req,res) => {
             }  
         })})
 
-        app.post('/register', (req, res) => {
-            const fName = req.body.fName
-            const lName = req.body.lName
-            const nbr = req.body.nbr
-            const email = req.body.email
-            const IDnumber = req.body.IDnumber
-            const passcode = req.body.passcode
+        // app.post('/register', (req, res) => {
+            
+        //     const values = req.body.values
 
-            db.query('INSERT INTO users (Username, UserLastNAme, phoneNumber, email, IDnumber, passcode) VALUES(?,?,?,?,?,?)',
-             [fName, lName, nbr, email, IDnumber,passcode], (err, result) =>{
-                if(err) {
-                    console.log(err)
-                } else {
-                    res.send("VALUES INSERTED")
-                }
-             })
-        })
+        //     db.query('INSERT INTO users (email) VALUES(?)',
+        //      [values], (err, result) =>{
+        //         if(err) {
+        //             console.log(err)
+        //         } else {
+        //             res.send("VALUES INSERTED")
+        //         }
+        //      })
+        // })
+
+        app.post('/register', (req, res) => {
+        const { email, password } = req.body;
+  // Save the email and password in the MySQL table here
+  // Assume you have a `users` table with columns `email` and `password`
+  const sql = `INSERT INTO users (email, passcode) VALUES ('${email}', '${password}')`;
+  db.query(sql, (error, results) => {
+    if (error) {
+      console.error('Error saving user:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.send('Success');
+  });
+})
     
         app.post('/login', (req, res) => {
             const username = req.body.username
@@ -412,7 +423,7 @@ app.get('/edit/:id', (req,res) => {
         })
 
         app.get(`/owner`, (req,res)=>{
-            const q = "select Username from users ORDER BY id DESC LIMIT 1"  
+            const q = "select email from users ORDER BY id DESC LIMIT 1"  
             db.query(q, (err,data)=>{
                 if (err){
                     console.log(err)

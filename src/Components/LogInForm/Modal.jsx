@@ -31,15 +31,19 @@ function Example() {
             axios.post(`http://localhost:8800/SignIn`, values)
             .then(res=>{
               if(res.data === "Success"){
-
-                navigate('/new')
-              }else{
-                alert("No record existed")
-              }
-            })
-            .catch(err=>console.log(err))
-        }
+          axios.post(`http://localhost:8800/register`, values)
+          .then(res => {
+            console.log("Email and password posted to table successfully");
+            navigate('/new');
+          })
+          .catch(err => console.log(err));
+      } else {
+        alert("No record existed");
+      }
+    })
+    .catch(err => console.log(err))
   }
+}
 
   return(
     <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
@@ -116,7 +120,7 @@ export default Example;
 //    myButton.disabled = true;
 //     }
 
-//     else{
+  //   else{
   //   axios.post(`http://localhost:8800/register`, {
   //     fName: fName,
   //     lName: lName,

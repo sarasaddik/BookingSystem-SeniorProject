@@ -119,7 +119,8 @@ export default function AddProperty() {
             return(
               <>
               <NavBarMin/>  
-    <h1>Welcome to Owner: {val.Username} </h1>
+    <h1>Welcome To The Owner Page </h1>
+    <p> <b>Your email address is: {val.email} </b> </p>
     
     </>
             )
