@@ -4,8 +4,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Example from "../LogInForm/Modal"
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+
+  const navigate = useNavigate();
+
+  const listProperties = () => {
+    navigate("/Login")
+  }
 
   return (
     
@@ -23,6 +30,7 @@ function NavBar() {
         <Nav.Link href="#LogIn" > <Example/></Nav.Link>
         </div> */}
       </Nav>
+      <button onClick={listProperties}>List Your Property</button>
         {/* <Nav.Link className="login" href="#Register" > <Example/></Nav.Link> */}
     </Container>
     

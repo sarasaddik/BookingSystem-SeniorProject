@@ -34,8 +34,10 @@ function CreateAccount() {
       }
 
     return (
-        <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
+        <div className='d-flex justify-content-center align-items-center bg-secondary vh-100'>
         <div className='bg-white p-3 rounded w-25'>
+          <h6>Create an account, then Login</h6>
+          <h6>to add your property</h6>
             <h2>Sign-Up</h2>
           <form action='' onSubmit={handleSubmit}>
             <div className='mb-3'> 

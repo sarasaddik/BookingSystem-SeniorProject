@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import React from 'react';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-import NavBarMin from '../Navbar/NavbarMinimise';
+import NavBarNew from '../Navbar/NavbarNew';
 
 export default function AddProperty() {
 
@@ -118,7 +118,7 @@ export default function AddProperty() {
 
             return(
               <>
-              <NavBarMin/>  
+              <NavBarNew/>  
     <h1>Welcome To The Owner Page </h1>
     <p> <b>Your email address is: {val.email} </b> </p>
     
